@@ -4834,5 +4834,46 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.news a {
+  text-decoration: none;
+  font-size: 1.3em; }
+
+.logo--center {
+  margin: 0 auto; }
+
+.nav--space {
+  padding: 0 5px;
+  margin: 0 auto; }
+
+.news {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-animation: marquee 50s linear infinite;
+  animation: marquee 50s linear infinite; }
+
+.news:hover {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused; }
+
+@-webkit-keyframes marquee {
+  from {
+    -webkit-transform: translateX(100%); }
+
+  to {
+    -webkit-transform: translateX(-100%); } }
+
+@keyframes marquee {
+  from {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%); }
+
+  to {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
 
 /*# sourceMappingURL=style.css.map */

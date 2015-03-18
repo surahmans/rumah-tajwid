@@ -18,9 +18,9 @@ var paths = {
 elixir(function(mix) {
     mix
         .sass(
-            "style.scss", 'public/css/', {includePaths: [paths.bootstrap + 'stylesheets/']})
-        .copy(
-            paths.bower + 'modernizr/modernizr.js', 'public/js/modernizr.js')
+            "style.scss", 'public/css/',
+                {includePaths: [paths.bootstrap + 'stylesheets/',
+                                paths.bower + 'bourbon/app/assets/stylesheets/']})
         .copy(
             paths.bower + 'modernizr/modernizr.js', 'public/js/modernizr.js')
         .scripts(
@@ -29,4 +29,3 @@ elixir(function(mix) {
             paths.bootstrap + "javascripts/bootstrap.js"
         ], 'public/js/app.js', './');
 });
-//paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap/'

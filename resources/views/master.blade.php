@@ -13,7 +13,21 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+            @yield('header')
 
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        @yield('content')
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        @yield('sidebar')
+                    </div>
+                </div>
+                <div class="row">
+                    @yield('footer')
+                </div>
+            </div>
 		<!-- jQuery and Bootstrap -->
 		<script src="{{ asset('js/app.js') }}"></script>
 	</body>
