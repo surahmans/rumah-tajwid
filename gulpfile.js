@@ -26,6 +26,7 @@ elixir(function(mix) {
         .scripts(
         [
             paths.bower + "jquery-1.9.1.min/index.js",
-            paths.bootstrap + "javascripts/bootstrap.js"
+            paths.bootstrap + "javascripts/bootstrap.js",
+            "/resources/assets/js/custom.js"
         ], 'public/js/app.js', './');
 });

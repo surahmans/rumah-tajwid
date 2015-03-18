@@ -1,5 +1,12 @@
 $news-font-size: 1.3em;
-.news a {
+a {
   text-decoration: none;
+}
+
+a:hover {
+  @extend a;
+}
+
+.news a {
   font-size: $news-font-size;
 }

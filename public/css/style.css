@@ -21,7 +21,7 @@ audio:not([controls]) {
 [hidden], template {
   display: none; }
 
-a {
+a, a:hover {
   background-color: transparent; }
 
 a:active, a:hover {
@@ -147,7 +147,7 @@ td, th {
     color: #000 !important;
     box-shadow: none !important;
     text-shadow: none !important; }
-  a, a:visited {
+  a, a:hover, a:visited {
     text-decoration: underline; }
   a[href]:after {
     content: " (" attr(href) ")"; }
@@ -1008,7 +1008,7 @@ input, button, select, textarea {
   font-size: inherit;
   line-height: inherit; }
 
-a {
+a, a:hover {
   color: #337ab7;
   text-decoration: none; }
   a:hover, a:focus {
@@ -4834,9 +4834,31 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+a, a:hover {
+  text-decoration: none; }
+
 .news a {
-  text-decoration: none;
   font-size: 1.3em; }
+
+.slide {
+  display: none;
+  position: relative;
+  z-index: 0; }
+  .slide img {
+    width: 100%; }
+
+.slide--active {
+  display: block; }
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+  color: #FFF;
+  padding: 10px; }
 
 .logo--center {
   margin: 0 auto; }
@@ -4852,10 +4874,9 @@ button.close {
   white-space: nowrap;
   -webkit-animation: marquee 50s linear infinite;
   animation: marquee 50s linear infinite; }
-
-.news:hover {
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused; }
+  .news :hover {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused; }
 
 @-webkit-keyframes marquee {
   from {

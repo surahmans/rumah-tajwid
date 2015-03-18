@@ -4,17 +4,17 @@
   overflow: hidden;
   white-space: nowrap;
   @include animation(marquee 50s linear infinite);
-}
 
-.news:hover {
-  @include animation-play-state(paused);
+  :hover {
+    @include animation-play-state(paused);
+  }
 }
 
 @include keyframes(marquee) {
   from {
-    @include transform(translateX(100%))
+    @include transform(translateX(100%));
   }
   to {
-    @include transform(translateX(-100%))
+    @include transform(translateX(-100%));
   }
 }
