@@ -1,0 +1,79 @@
+.blog {
+
+}
+
+.blog--latest {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.blog--latest--img {
+  width: 100%;
+  max-height: 100px;
+  background-size: cover;
+}
+
+.blog--latest--img__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  color: #FFF;
+  background-color: rgba(0,0,0,0.7);
+  padding: 10px;
+  font-size: 1.8em;
+  text-align: center;
+  border: none;
+  @include transform(translateY(-100%));
+  @include transition(ease 0.5s);
+
+  a {
+    color: #FFF;
+
+    &:hover {
+      color: #FFF;
+    }
+  }
+}
+
+.blog--links {
+  margin: 10px auto 0;
+  a {
+    color: $blog-links-color;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-weight: 500;
+    display: block;
+    border-bottom: solid 1px lightgray;
+    padding: 0 8px;
+
+    &:hover {
+      background-color: lighten($blog-links-color, 10%);
+      color: darken($blog-links-color, 10%);
+      @include border-left-radius(5px);
+      @include border-right-radius(5px);
+    }
+  }
+
+  .more {
+
+    @include border-left-radius(10px);
+    @include border-right-radius(10px);
+
+    margin: 20px auto 0;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    background-color: $blog-links-color;
+    color: #FFF;
+
+    &:hover {
+      background-color: darken($blog-links-color, 10%);
+      color: #FFF;
+      @include border-left-radius(10px);
+      @include border-right-radius(10px);
+    }
+  }
+}

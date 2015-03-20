@@ -1,0 +1,4 @@
+.blog--latest:hover > .blog--latest--img__overlay {
+  @include transform(translateY(0%));
+  @include transition(ease 0.5s);
+}
