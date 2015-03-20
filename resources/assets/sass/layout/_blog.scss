@@ -51,7 +51,7 @@
 
     &:hover {
       background-color: lighten($blog-links-color, 10%);
-      color: darken($blog-links-color, 10%);
+      color: #FFF;
       @include border-left-radius(5px);
       @include border-right-radius(5px);
     }

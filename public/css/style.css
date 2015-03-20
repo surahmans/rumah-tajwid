@@ -4912,15 +4912,15 @@ a, a:hover {
 .blog--links {
   margin: 10px auto 0; }
   .blog--links a {
-    color: #179298;
+    color: #e97f15;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     font-weight: 500;
     display: block;
     border-bottom: solid 1px lightgray;
     padding: 0 8px; }
     .blog--links a:hover {
-      background-color: #1ebdc4;
-      color: #10676c;
+      background-color: #ee9943;
+      color: #FFF;
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
       border-bottom-right-radius: 5px;
@@ -4934,10 +4934,10 @@ a, a:hover {
     font-weight: 500;
     text-align: center;
     border: none;
-    background-color: #179298;
+    background-color: #e97f15;
     color: #FFF; }
     .blog--links .more:hover {
-      background-color: #10676c;
+      background-color: #ba6611;
       color: #FFF;
       border-bottom-left-radius: 10px;
       border-top-left-radius: 10px;
