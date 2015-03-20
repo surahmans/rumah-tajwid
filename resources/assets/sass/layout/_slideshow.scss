@@ -1,0 +1,25 @@
+#slideshow {
+  margin-bottom: 20px;
+}
+
+.slide {
+  display: none;
+  position: relative;
+  z-index: 0;
+  img {
+    width: 100%;
+  }
+}
+
+.slide--active {
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0,0,0,0.9);
+  @include transform(translateY(-100%));
+  color: #FFF;
+  padding: 10px;
+}

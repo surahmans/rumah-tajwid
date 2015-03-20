@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="slideshow">
     <div class="col-xs-12">
         <div class="slide slide--active">
             <img src="{{ asset('images/slide/1.jpg') }}" class="img-rounded img-responsive" alt="Slide image"/>

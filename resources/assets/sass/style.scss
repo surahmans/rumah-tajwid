@@ -3,6 +3,8 @@
 //mixins library
 @import "bourbon";
 
+//color property
+@import "theme/theme";
 
 @import "base/base";
 
@@ -13,7 +15,10 @@
 @import "layout/menu";
 @import "layout/news";
 
+//content
+@import "layout/slideshow";
+
 @import "module/module";
 @import "state/state";
-@import "theme/theme";
+
 

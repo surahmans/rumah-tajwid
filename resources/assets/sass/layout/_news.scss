@@ -4,10 +4,10 @@
   overflow: hidden;
   white-space: nowrap;
   @include animation(marquee 50s linear infinite);
+}
 
-  :hover {
-    @include animation-play-state(paused);
-  }
+.news:hover {
+  @include animation-play-state(paused);
 }
 
 @include keyframes(marquee) {
