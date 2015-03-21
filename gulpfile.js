@@ -22,6 +22,7 @@ elixir(function(mix) {
                 {includePaths: [paths.bootstrap + 'stylesheets/',
                                 paths.bower + 'bourbon/app/assets/stylesheets/']})
         .copy(
+            paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap/',
             paths.bower + 'modernizr/modernizr.js', 'public/js/modernizr.js')
         .scripts(
         [
