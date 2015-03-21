@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row newsfeed">
     <div class="col-xs-12">
         <p class="news">
             <a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a> |
