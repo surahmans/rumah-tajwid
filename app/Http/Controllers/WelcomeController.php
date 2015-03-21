@@ -33,4 +33,9 @@ class WelcomeController extends Controller {
 		return view('front.main');
 	}
 
+    public function category()
+    {
+        return view('front.category');
+    }
+
 }
