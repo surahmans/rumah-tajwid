@@ -19,14 +19,24 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#popular" data-toggle="tab">Populer</a></li>
                         <li><a href="#recent" data-toggle="tab">Terkini</a></li>
-                        <li><a href="#comment" data-toggle="tab">Komentar</a></li>
+                        <li>
+                            <a href="#comment" data-toggle="tab">
+                                <span class="fa fa-comment"> Komentar</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="panel-body">
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="popular">Default 1</div>
-                        <div class="tab-pane fade" id="recent">Default 2</div>
-                        <div class="tab-pane fade" id="comment">Default 3</div>
+                        <div class="tab-pane fade in active" id="popular">
+
+                        </div>
+                        <div class="tab-pane fade" id="recent">
+
+                        </div>
+                        <div class="tab-pane fade" id="comment">
+
+                        </div>
                     </div>
                 </div>
             </div>

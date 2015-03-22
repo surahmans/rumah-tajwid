@@ -20,10 +20,12 @@ elixir(function(mix) {
         .sass(
             "style.scss", 'public/css/',
                 {includePaths: [paths.bootstrap + 'stylesheets/',
-                                paths.bower + 'bourbon/app/assets/stylesheets/']})
+                                paths.bower + 'bourbon/app/assets/stylesheets/',
+                                paths.bower + 'fontawesome/scss/']})
         .copy(
-            paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap/',
-            paths.bower + 'modernizr/modernizr.js', 'public/js/modernizr.js')
+            paths.bootstrap + 'fonts/bootstrap/', 'public/fonts/bootstrap/',
+            paths.bower + 'modernizr/modernizr.js', 'public/js/modernizr.js',
+            paths.bower + 'fontawesome/fonts/', 'public/fonts/awesome/')
         .scripts(
         [
             paths.bower + "jquery-1.9.1.min/index.js",
