@@ -1,5 +1,8 @@
 <div class="row">
     <div class="col-xs-12">
-        <img src="{{URL::asset('asset/img/logo.jpg')}}" class="img-responsive logo logo--center" alt="Logo Rumah Tajwid"/>
+        <p class="trojanhorse text-center">
+            <img src="{{URL::asset('asset/img/logo.jpg')}}" class="logo" alt="Logo Rumah Tajwid"/>
+            Rumah Tajwid.com
+        </p>
     </div>
 </div>

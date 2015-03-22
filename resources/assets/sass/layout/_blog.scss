@@ -47,7 +47,7 @@
     font-weight: 500;
     display: block;
     border-bottom: solid 1px lightgray;
-    padding: 0 8px;
+    padding: 2px 8px;
 
     &:hover {
       background-color: lighten($blog-links-color, 10%);
@@ -68,6 +68,7 @@
     border: none;
     background-color: $blog-links-color;
     color: #FFF;
+    font-weight: 600;
 
     &:hover {
       background-color: darken($blog-links-color, 10%);

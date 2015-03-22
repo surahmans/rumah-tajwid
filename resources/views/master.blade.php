@@ -24,10 +24,13 @@
                         @yield('sidebar')
                     </div>
                 </div>
+                <hr/>
                 <div class="row">
                     @yield('footer')
                 </div>
             </div>
+
+            @yield('')
 		<!-- jQuery and Bootstrap -->
 		<script src="{{ asset('js/app.js') }}"></script>
 	</body>

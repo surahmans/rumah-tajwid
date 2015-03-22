@@ -3268,7 +3268,8 @@ tbody.collapse.in {
 
 .navbar-default {
   background-color: #e97f15;
-  border-color: #e7e7e7; }
+  border-color: #e7e7e7;
+  font-weight: 600; }
   .navbar-default .navbar-brand {
     color: #777; }
     .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -6560,8 +6561,21 @@ a, a:hover {
 .news a {
   font-size: 1.3em; }
 
-.logo--center {
-  margin: 0 auto; }
+@font-face {
+  font-family: trojanhorse;
+  src: url('../fonts/trojanpro-bold.otf'); }
+
+@font-face {
+  font-family: trojanhorse;
+  src: url('../fonts/trojanpro-bold.otf');
+  font-weight: bold; }
+
+.trojanhorse {
+  font-family: trojanhorse;
+  font-size: 3em; }
+
+.logo {
+  vertical-align: middle; }
 
 .nav--space {
   padding: 0 5px;
@@ -6641,7 +6655,7 @@ a, a:hover {
     font-weight: 500;
     display: block;
     border-bottom: solid 1px lightgray;
-    padding: 0 8px; }
+    padding: 2px 8px; }
     .blog--links a:hover {
       background-color: #ee9943;
       color: #FFF;
@@ -6659,7 +6673,8 @@ a, a:hover {
     text-align: center;
     border: none;
     background-color: #e97f15;
-    color: #FFF; }
+    color: #FFF;
+    font-weight: 600; }
     .blog--links .more:hover {
       background-color: #ba6611;
       color: #FFF;

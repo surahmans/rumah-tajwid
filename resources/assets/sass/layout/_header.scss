@@ -1,9 +1,4 @@
 .logo {
-
-}
-
-.logo--center {
-  @extend .logo;
-  margin: 0 auto;
+  vertical-align: middle;
 }
 
