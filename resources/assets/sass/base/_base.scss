@@ -13,16 +13,33 @@ a:hover {
 
 @font-face {
   font-family: trojanhorse;
-  src: url('../fonts/trojanpro-bold.otf');
+  src: url('../fonts/base/trojanpro-bold.otf');
 }
 
 @font-face {
   font-family: trojanhorse;
-  src: url('../fonts/trojanpro-bold.otf');
+  src: url('../fonts/base/trojanpro-bold.otf');
   font-weight: bold;
 }
 
 .trojanhorse {
   font-family: trojanhorse;
   font-size: 3em;
+}
+
+@font-face {
+  font-family: corbel-backup;
+  src: url('../fonts/base/corbel-regular.ttf');
+}
+
+@font-face {
+  font-family: corbel-backup;
+  src: url('../fonts/base/corbel-bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: corbel-backup;
+  src: url('../fonts/base/corbel-italic.ttf');
+  font-style: italic;
 }
