@@ -1,0 +1,76 @@
+.article {
+  font-family: corbel, corbel-backup, verdana, Arial, Helvetica, sans-serif;
+
+  p {
+    font-size: 14pt;
+  }
+
+  .tags > a {
+    background-color: $hijau-tosca;
+    color: #FFF;
+    @include border-left-radius(5px);
+    @include border-right-radius(5px);
+    padding: 5px;
+
+    &:hover {
+      background-color: lighten($hijau-tosca, 10%);
+    }
+  }
+
+  .share {
+    margin: 15px auto;
+
+    & > a {
+      @include border-left-radius(5px);
+      @include border-right-radius(5px);
+      color: #FFF;
+
+
+    }
+
+    .fb {
+      background-color: #284175;
+      padding: 8px;
+
+      &:hover {
+        background-color: lighten(#284175, 10%);
+      }
+    }
+
+    .tweet {
+      @extend .fb;
+      background-color: #0593C8;
+
+      &:hover {
+        background-color: lighten(#0593C8, 10%);
+      }
+    }
+
+    .google {
+      @extend .fb;
+      background-color: #B93F2E;
+
+      &:hover {
+        background-color: lighten(#B93F2E, 10%);
+      }
+    }
+
+    & > span {
+      padding: 5px 0;
+      border-top: solid 1px darkgray;
+    }
+  }
+}
+
+.article--img {
+  width: 100%;
+  background-size: cover;
+}
+
+.article--relations {
+
+  & img {
+    @extend .article--img;
+    margin-bottom: 10px;
+  }
+}
