@@ -6592,6 +6592,20 @@ a, a:hover {
   margin-left: -30px;
   width: 100%; }
 
+.list {
+  position: relative;
+  height: 70px;
+  clear: left; }
+  .list:hover {
+    background-color: #f7f7f7; }
+  .list img {
+    float: left;
+    margin: 0 10px 10px 0; }
+  .list p {
+    position: absolute;
+    right: 0;
+    bottom: -10px; }
+
 .logo {
   vertical-align: middle; }
 

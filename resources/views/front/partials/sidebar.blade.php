@@ -29,7 +29,26 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="popular">
+                            <div class="list">
+                                <img src="{{ asset('images/article/thumb/1.jpg') }}" alt=""/>
+                                <a href="#">Mari belajar membaca alquran dengan tepat dan benar</a>
+                                <p>On 23 Maret 2015</p>
+                            </div>
+                            <hr/>
 
+                            <div class="list">
+                                <img src="{{ asset('images/article/thumb/2.jpg') }}" alt=""/>
+                                <a href="#">Kenali keasalah membaca</a>
+                                <p>On 23 Maret 2015</p>
+                            </div>
+                            <hr/>
+
+                            <div class="list">
+                                <img src="{{ asset('images/article/thumb/3.jpg') }}" alt=""/>
+                                <a href="#">Perbanyaklah dalam membaca alqur'an</a>
+                                <p>On 23 Maret 2015</p>
+                            </div>
+                            <hr/>
                         </div>
                         <div class="tab-pane fade" id="recent">
 
