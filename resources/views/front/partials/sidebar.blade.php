@@ -35,7 +35,9 @@
 
                         </div>
                         <div class="tab-pane fade" id="comment">
-
+                            <div class="disqus-comment">
+                                <script type="text/javascript" src="http://rumahtajwid.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=90&excerpt_length=100"></script>
+                            </div>
                         </div>
                     </div>
                 </div>

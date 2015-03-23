@@ -6588,6 +6588,10 @@ a, a:hover {
   src: url('../fonts/base/corbel-italic.ttf');
   font-style: italic; }
 
+.disqus-comment {
+  margin-left: -30px;
+  width: 100%; }
+
 .logo {
   vertical-align: middle; }
 
@@ -6791,6 +6795,10 @@ a, a:hover {
   -ms-transform: translateY(0%);
   transform: translateY(0%);
   transition: ease 0.5s; }
+
+.dsq-widget-item:hover {
+  border-right: 3px solid #a0a0a0;
+  background-color: #eaeaea; }
 
 
 /*# sourceMappingURL=style.css.map */
