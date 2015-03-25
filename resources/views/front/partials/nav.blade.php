@@ -8,33 +8,44 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand" href="#">Rumah Tajwid</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
+                @foreach($menus as $menu)
+                    @if(count($menu->submenu) > 0)
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                {{ $menu->name }} <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach($menu->submenu as $child)
+                                    <li><a href="{{ $child->page }}">{{ $child->name }}</a></li>
+                                @endforeach
+                            </ul>
+                         </li>
+                    @else
+                        @if(count($menu->parentMenu) == 0)
+                           <li><a href="{{ $menu->page }}">{{ $menu->name }}</a></li>
+                        @endif
+                    @endif
+                @endforeach
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
