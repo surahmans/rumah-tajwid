@@ -1,7 +1,8 @@
 <?php namespace App\Providers;
 
+use App\Article;
 use App\Menu;
-use App\Submenu;
+
 use Illuminate\Support\ServiceProvider;
 
 class ViewComposerServiceProvider extends ServiceProvider {
@@ -14,6 +15,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
 	public function boot()
 	{
         $this->composeNavigation();
+        $this->composeBlogs();
     }
 
 	/**
