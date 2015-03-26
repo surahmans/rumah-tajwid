@@ -15,7 +15,6 @@ class ViewComposerServiceProvider extends ServiceProvider {
 	public function boot()
 	{
         $this->composeNavigation();
-        $this->composeBlogs();
     }
 
 	/**
