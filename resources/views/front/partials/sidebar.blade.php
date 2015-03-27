@@ -28,36 +28,35 @@
                 </div>
                 <div class="panel-body">
                     <div class="tab-content">
+                        <!-- Popular posts -->
                         <div class="tab-pane fade in active" id="popular">
-                            <div class="list">
-                                <img src="{{ asset('images/article/thumb/1.jpg') }}" alt=""/>
-                                <a href="#">Mari belajar membaca alquran dengan tepat dan benar</a>
-                                <p>On 23 Maret 2015</p>
-                            </div>
-                            <hr/>
-
-                            <div class="list">
-                                <img src="{{ asset('images/article/thumb/2.jpg') }}" alt=""/>
-                                <a href="#">Kenali keasalah membaca</a>
-                                <p>On 23 Maret 2015</p>
-                            </div>
-                            <hr/>
-
-                            <div class="list">
-                                <img src="{{ asset('images/article/thumb/3.jpg') }}" alt=""/>
-                                <a href="#">Perbanyaklah dalam membaca alqur'an</a>
-                                <p>On 23 Maret 2015</p>
-                            </div>
-                            <hr/>
+                            @foreach($popular as $article)
+                                <div class="list">
+                                    <img src="{{ asset('images/article/thumb/' . $article->cover) }}" alt=""/>
+                                    <a href="{{ $article->slug }}">{{ $article->title }}</a>
+                                    <p>On {{ $article->published_at }}</p>
+                                </div>
+                            @endforeach
                         </div>
+                        <!-- End of Popular posts -->
+                        <!-- Recent posts -->
                         <div class="tab-pane fade" id="recent">
-
+                            @foreach($recent as $article)
+                                <div class="list">
+                                    <img src="{{ asset('images/article/thumb/' . $article->cover) }}" alt=""/>
+                                    <a href="{{ $article->slug }}">{{ $article->title }}</a>
+                                    <p>On {{ $article->published_at }}</p>
+                                </div>
+                            @endforeach
                         </div>
+                        <!-- End of recent posts -->
+                        <!-- Comments post -->
                         <div class="tab-pane fade" id="comment">
                             <div class="disqus-comment">
                                 <script type="text/javascript" src="http://rumahtajwid.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=90&excerpt_length=100"></script>
                             </div>
                         </div>
+                        <!-- End of Comments post -->
                     </div>
                 </div>
             </div>

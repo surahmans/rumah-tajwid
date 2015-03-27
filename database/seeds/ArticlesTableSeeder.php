@@ -46,7 +46,7 @@ class ArticlesTableSeeder extends Seeder {
             ],
             [
                 'id'      => 4,
-                'cover'   => '4.jpg',
+                'cover'   => '1.jpg',
                 'title'   => 'Agar Bacaan Kita Seperti Rasulullah',
                 'slug'    => 'agar-bacaan-kita-seperti-rasulullah',
                 'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',

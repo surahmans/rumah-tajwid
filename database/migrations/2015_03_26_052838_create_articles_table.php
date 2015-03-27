@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration {
             $table->date('published_at');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->delete('cascade');
+            $table->integer('views')->unsigned()->default(0);
             $table->timestamps();
         });
 	}
