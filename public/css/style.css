@@ -6615,7 +6615,8 @@ a, a:hover {
 
 .newsfeed {
   box-shadow: inset 5px 5px 30px 1px #cae3ff;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  overflow: hidden; }
 
 .news {
   width: 100%;
