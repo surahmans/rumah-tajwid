@@ -1,6 +1,7 @@
 .newsfeed {
   @include box-shadow(inset 5px 5px 30px 1px lighten(#7dbaff, 15%));
   margin-bottom: 10px;
+  overflow: hidden;
 }
 
 .news {
