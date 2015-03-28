@@ -33,7 +33,7 @@
                             @foreach($popular as $article)
                                 <div class="list">
                                     <img src="{{ asset('images/article/thumb/' . $article->cover) }}" alt=""/>
-                                    <a href="{{ $article->slug }}">{{ $article->title }}</a>
+                                    <a href="{{ action('ArticleController@show', [$article->id]) }}">{{ $article->title }}</a>
                                     <p>On {{ $article->published_at }}</p>
                                 </div>
                             @endforeach
@@ -44,7 +44,7 @@
                             @foreach($recent as $article)
                                 <div class="list">
                                     <img src="{{ asset('images/article/thumb/' . $article->cover) }}" alt=""/>
-                                    <a href="{{ $article->slug }}">{{ $article->title }}</a>
+                                    <a href="{{ action('ArticleController@show', [$article->id]) }}">{{ $article->title }}</a>
                                     <p>On {{ $article->published_at }}</p>
                                 </div>
                             @endforeach
