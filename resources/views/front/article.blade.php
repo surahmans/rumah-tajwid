@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Judul artikel
+    {{ $article->title }}
 @stop
 
 @section('header')

@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\DB;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -41,6 +44,13 @@ class WelcomeController extends Controller {
     public function article()
     {
         return view('front.article');
+    }
+
+    public function test()
+    {
+        $art = DB::query('select * from articles');
+
+        return $art;
     }
 
 }
