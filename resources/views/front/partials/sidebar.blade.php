@@ -34,7 +34,7 @@
                                 <div class="list">
                                     <img src="{{ asset('images/article/thumb/' . $article->cover) }}" alt=""/>
                                     <a href="{{ action('ArticleController@show', [$article->id]) }}">{{ $article->title }}</a>
-                                    <p>On {{ $article->published_at }}</p>
+                                    <p>{{ Date::parse($article->published_at)->format('l, j F Y') }}</p>
                                 </div>
                             @endforeach
                         </div>
@@ -45,7 +45,7 @@
                                 <div class="list">
                                     <img src="{{ asset('images/article/thumb/' . $article->cover) }}" alt=""/>
                                     <a href="{{ action('ArticleController@show', [$article->id]) }}">{{ $article->title }}</a>
-                                    <p>On {{ $article->published_at }}</p>
+                                    <p>{{ Date::parse($article->published_at)->diffForhumans() }}</p>
                                 </div>
                             @endforeach
                         </div>

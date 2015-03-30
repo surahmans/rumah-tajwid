@@ -5,7 +5,7 @@
 
             <h2>{{ $article->title }}</h2>
 
-            <span class="fa fa-calendar"> {{ $article->published_at }}</span>
+            <span class="fa fa-calendar"> {{ Date::parse($article->published_at)->format('l, j F Y') }}</span>
             <span class="fa fa-user"> {{ $article->user->name }}</span>
             <hr/>
 
