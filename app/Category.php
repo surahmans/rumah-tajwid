@@ -8,7 +8,7 @@ class Category extends Model {
 
     protected $fillable = [
         'name',
-        'slud'
+        'slug'
     ];
 
     public function articles()

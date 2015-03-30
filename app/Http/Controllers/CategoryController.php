@@ -1,13 +1,13 @@
 <?php namespace App\Http\Controllers;
 
-use App\Article;
-use App\Config;
+use App\Category;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
-class ArticleController extends Controller {
+class CategoryController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -47,13 +47,7 @@ class ArticleController extends Controller {
 	 */
 	public function show($id)
 	{
-		$article = Article::with('user')->find($id);
-
-        if(is_null($article)) {
-            abort(404);
-        }
-
-        return view('front.article', compact('article'));
+		//
 	}
 
 	/**
@@ -88,19 +82,5 @@ class ArticleController extends Controller {
 	{
 		//
 	}
-
-    /**
-     * Show articles by category
-     *
-     * @param $id
-     */
-    public function category($id)
-    {
-        $amount = Config::where('name', 'paginate')->first();
-
-        $articles = Article::where('category_id', $id)->paginate($amount->value);
-
-        return view('front.category', compact('articles'));
-    }
 
 }
