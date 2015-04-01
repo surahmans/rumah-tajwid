@@ -15,7 +15,20 @@ class ConfigsTableSeeder extends Seeder {
             [
                 'name'  => 'paginate',
                 'value' => 3
-            ]
+            ],
+            [
+                'name'  => 'facebook',
+                'value' => 'https://www.facebook.com/pages/Rumah-Tajwid-Indonesia/119628428065731'
+            ],
+            [
+                'name'  => 'maps',
+                'value' => '-6.39750,  	106.81216'
+            ],
+            [
+                'name'  => 'twitter',
+                'value' => 'rumah_tajwid'
+            ],
+
         ];
 
         DB::table('configs')->insert($config);

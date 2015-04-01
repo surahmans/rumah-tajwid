@@ -2,6 +2,7 @@
 
 use App\Article;
 use App\Category;
+use App\Configuration;
 use App\Menu;
 
 use Illuminate\Support\ServiceProvider;
@@ -19,6 +20,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
         $this->composePopular();
         $this->composeRecent();
         $this->composeBlogs();
+        $this->composeConfig();
     }
 
 	/**
@@ -64,6 +66,9 @@ class ViewComposerServiceProvider extends ServiceProvider {
         });
     }
 
+    /**
+     * Show blogs
+     */
     public function composeBlogs()
     {
         view()->composer('front.partials.blogs', function ($view) {
@@ -71,6 +76,17 @@ class ViewComposerServiceProvider extends ServiceProvider {
                 $query->orderBy('id', 'DESC');
             }))->get();
             $view->with('blogs', $blogs);
+        });
+    }
+
+    /**
+     * Web config
+     */
+    public function composeConfig()
+    {
+        view()->composer('front.partials.footer',  function($view) {
+            $configs = Configuration::all();
+            $view->with('configs', $configs);
         });
     }
 }

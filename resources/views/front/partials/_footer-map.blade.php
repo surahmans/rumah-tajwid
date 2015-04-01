@@ -16,19 +16,22 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 <script type="text/javascript">
+    @foreach($configs as $config)
+        @if($config->name == "maps")
+            var myLatlng = new google.maps.LatLng({{ $config->value  }});
+        @endif
+    @endforeach
 
-      var myLatlng = new google.maps.LatLng(-6.397495, 106.812137);
+    var myOptions = {
+      zoom: 16,
+      center: myLatlng
+    };
 
-      var myOptions = {
-          zoom: 16,
-          center: myLatlng
-      };
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
 
-      var map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-      var marker = new google.maps.Marker({
-           position: myLatlng,
-           map: map,
-           title:"Rumah Tajwid"
-      });
+    var marker = new google.maps.Marker({
+       position: myLatlng,
+       map: map,
+       title:"Rumah Tajwid"
+    });
 </script>

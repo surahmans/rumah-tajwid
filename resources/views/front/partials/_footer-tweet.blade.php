@@ -1,7 +1,11 @@
 <div class="col-xs-12 col-md-4">
     <h3>Twitter</h3>
 
-    <a class="twitter-timeline" width="100%" height="250" href="https://twitter.com/twitterdev" data-widget-id="344713329262084096" data-screen-name="rumah_tajwid" data-show-replies="false" data-theme="light" data-link-color="" data-border-color="" data-chrome="nofooter noborders">Tweets by @rumah_tajwid</a>
+    @foreach($configs as $config)
+        @if($config->name == "twitter")
+            <a class="twitter-timeline" width="100%" height="250" href="https://twitter.com/twitterdev" data-widget-id="344713329262084096" data-screen-name="{{ $config->value }}" data-show-replies="false" data-theme="light" data-link-color="" data-border-color="" data-chrome="nofooter noborders">Tweets by @rumah_tajwid</a>
+        @endif
+    @endforeach
 
 </div>
 

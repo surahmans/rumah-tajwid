@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Article;
-use App\Config;
+use App\Configuration;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -96,7 +96,7 @@ class ArticleController extends Controller {
      */
     public function category($id)
     {
-        $amount = Config::where('name', 'paginate')->first();
+        $amount = Configuration::where('name', 'paginate')->first();
 
         $articles = Article::where('category_id', $id)->paginate($amount->value);
 
