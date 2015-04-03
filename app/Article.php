@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Article extends Model {
 
@@ -22,6 +23,15 @@ class Article extends Model {
     public function category()
     {
         return $this->belongsTo('App\Category');
+    }
+
+    /**
+     * Get article excerpt
+     * @return string
+     */
+    public function getExcerptAttribute()
+    {
+        return Str::limit($this->body, 200, '...');
     }
 
 }

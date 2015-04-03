@@ -22,7 +22,8 @@ class ArticlesTableSeeder extends Seeder {
                 'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
                 'user_id' => 3,
                 'published_at' => date('Y-m-d'),
-                'category_id'  => 1
+                'category_id'  => 1,
+                'slide'   => 1
             ],
             [
                 'id'      => 2,
@@ -32,7 +33,8 @@ class ArticlesTableSeeder extends Seeder {
                 'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
                 'user_id' => 2,
                 'published_at' => date('Y-m-d'),
-                'category_id'  => 1
+                'category_id'  => 1,
+                'slide'   => 1
             ],
             [
                 'id'      => 3,
@@ -42,7 +44,8 @@ class ArticlesTableSeeder extends Seeder {
                 'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
                 'user_id' => 3,
                 'published_at' => date('Y-m-d'),
-                'category_id'  => 1
+                'category_id'  => 1,
+                'slide'   => 1
             ],
             [
                 'id'      => 4,
@@ -52,7 +55,8 @@ class ArticlesTableSeeder extends Seeder {
                 'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
                 'user_id' => 2,
                 'published_at' => date('Y-m-d'),
-                'category_id'  => 1
+                'category_id'  => 1,
+                'slide'   => 1
             ],
             [
                 'id'      => 5,
@@ -62,7 +66,8 @@ class ArticlesTableSeeder extends Seeder {
                 'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
                 'user_id' => 2,
                 'published_at' => date('Y-m-d'),
-                'category_id'  => 1
+                'category_id'  => 1,
+                'slide'   => 0
             ],
             [
                 'id'      => 6,
@@ -72,7 +77,8 @@ class ArticlesTableSeeder extends Seeder {
                 'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
                 'user_id' => 2,
                 'published_at' => date('Y-m-d'),
-                'category_id'  => 3
+                'category_id'  => 3,
+                'slide'   => 0
             ],
         ];
 

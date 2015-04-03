@@ -1,36 +1,15 @@
 <div class="row" id="slideshow">
     <div class="col-xs-12">
-        <div class="slide slide--active">
-            <img src="{{ asset('images/slide/1.jpg') }}" class="img-rounded img-responsive" alt="Slide image"/>
-            <div class="overlay">
-                <h3><a href="#">Pertama</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores consectetur dolorem ea eius ipsa magni, modi odit perspiciatis placeat quam rem repellendus rerum sed, similique. Aliquam labore laborum neque?</p>
-             </div>
-        </div>
-
-        <div class="slide">
-            <img src="{{ asset('images/slide/2.jpg') }}" class="img-rounded img-responsive" alt="Slide image"/>
-            <div class="overlay">
-             <h3><a href="#">Kedua</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores consectetur dolorem ea eius ipsa magni, modi odit perspiciatis placeat quam rem repellendus rerum sed, similique. Aliquam labore laborum neque?</p>
+        <?php $active = 'slide--active'; ?>
+        @foreach($slides as $slide)
+            <div class="slide {{ $active }}">
+                <img src="{{ asset('images/slide/'.$slide->cover) }}" class="img-rounded img-responsive" alt="Slide image"/>
+                <div class="overlay">
+                    <h3><a href="{{ action('ArticleController@show', [$slide->id]) }}">{{ $slide->title }}</a></h3>
+                    <p>{{ $slide->excerpt }}</p>
+                </div>
             </div>
-        </div>
-
-        <div class="slide">
-            <img src="{{ asset('images/slide/3.jpg') }}" class="img-rounded img-responsive" alt="Slide image"/>
-            <div class="overlay">
-             <h3><a href="#">Ketiga</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores consectetur dolorem ea eius ipsa magni, modi odit perspiciatis placeat quam rem repellendus rerum sed, similique. Aliquam labore laborum neque?</p>
-            </div>
-        </div>
-
-        <div class="slide">
-            <img src="{{ asset('images/slide/4.jpg') }}" class="img-rounded img-responsive" alt="Slide image"/>
-            <div class="overlay">
-             <h3><a href="#">Keempat</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores consectetur dolorem ea eius ipsa magni, modi odit perspiciatis placeat quam rem repellendus rerum sed, similique. Aliquam labore laborum neque?</p>
-            </div>
-        </div>
-
+            <?php $active = ''; ?>
+        @endforeach
     </div>
 </div>

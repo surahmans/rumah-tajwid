@@ -21,6 +21,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
         $this->composeRecent();
         $this->composeBlogs();
         $this->composeConfig();
+        $this->composeSlideshow();
     }
 
 	/**
@@ -87,6 +88,17 @@ class ViewComposerServiceProvider extends ServiceProvider {
         view()->composer('front.partials.footer',  function($view) {
             $configs = Configuration::all();
             $view->with('configs', $configs);
+        });
+    }
+
+    /**
+     * Show slide show
+     */
+    public function composeSlideshow()
+    {
+        view()->composer('front.partials.slide', function($view) {
+            $slides = Article::where('slide', 1)->orderBy('id', 'DESC')->get();
+            $view->with('slides', $slides);
         });
     }
 }
