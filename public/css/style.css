@@ -6621,7 +6621,6 @@ a, a:hover {
 .news {
   width: 100%;
   margin: 0 auto;
-  overflow: hidden;
   white-space: nowrap;
   -webkit-animation: marquee 50s linear infinite;
   animation: marquee 50s linear infinite; }
