@@ -15,3 +15,8 @@ Route::get('/', 'WelcomeController@index');
 Route::get('articles/{id}', 'ArticleController@category');
 
 Route::get('article/{id}', 'ArticleController@show');
+
+Event::listen('illuminate.query', function($query)
+{
+    \Log::debug($query);
+});
