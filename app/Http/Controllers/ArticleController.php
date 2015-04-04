@@ -54,7 +54,10 @@ class ArticleController extends Controller {
             abort(404);
         }
 
-        return view('front.article', compact('article'));
+        $related = $this->getRelatedArticles($article);
+
+
+        return view('front.article', compact('article', 'related'));
 	}
 
 	/**
@@ -102,6 +105,19 @@ class ArticleController extends Controller {
         $articles = Article::where('category_id', $id)->paginate($amount->value);
 
         return view('front.category', compact('articles'));
+    }
+
+    /**
+     * Get related articles
+     *
+     * @return array of article
+     */
+    public function getRelatedArticles($article)
+    {
+        $related = Article::whereHas('tags', function ($query) use ($article) {
+            $query->whereIn('id', $article->tags()->lists('id'));
+        })->whereNotIn('id', [$article->id])->orderBy('id', 'DESC')->take(3)->get();
+        return $related;
     }
 
 }

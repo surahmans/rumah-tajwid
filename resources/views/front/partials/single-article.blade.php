@@ -40,32 +40,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4">
-                        <h4>
-                            <a href="#">
-                                <img src="{{ asset('images/slide/1.jpg') }}" class="img-rounded" alt=""/>
-                                Belajar Al-Qur'an Tidaklah Sulit
+                    @foreach($related as $article)
+                        <div class="col-xs-4">
+                            <a href="{{ action('ArticleController@show', [$article->id]) }}">
+                                <img src="{{ asset('images/slide/' . $article->cover) }}" class="img-rounded" alt=""/>
+                                <h4 class="text-center">{{ $article->title }}</h4>
                             </a>
-                        </h4>
-                    </div>
-
-                    <div class="col-xs-4">
-                        <h4>
-                            <a href="#">
-                                <img src="{{ asset('images/slide/2.jpg') }}" class="img-rounded" alt=""/>
-                                Sembuhkan penyakit dengan al-Qur'an
-                            </a>
-                        </h4>
-                    </div>
-
-                    <div class="col-xs-4">
-                        <h4>
-                            <a href="#">
-                                <img src="{{ asset('images/slide/3.jpg') }}" class="img-rounded" alt=""/>
-                                Belajar Tajwid lah sejak usia dini
-                            </a>
-                        </h4>
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
