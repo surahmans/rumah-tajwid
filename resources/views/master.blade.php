@@ -8,6 +8,7 @@
 		<!-- Bootstrap and Custom CSS -->
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen">
 		<script src="{{ asset('js/modernizr.js') }}"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/favicon.ico') }}"/>
 	</head>
 	<body>
         <!--[if lt IE 8]>
