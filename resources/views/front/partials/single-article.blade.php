@@ -26,10 +26,9 @@
             <div class="tags">
                 <h4 class="fa fa-tags"> Tags:</h4>
 
-                <a href="#">Qur'an</a>
-                <a href="#">Tajwid</a>
-                <a href="#">Ilmu</a>
-                <a href="#">Motivasi</a>
+                @foreach($article->tags as $tag)
+                    <a href="">{{ $tag->name }}</a>
+                @endforeach
             </div>
 
             <hr/>

@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller {
 
@@ -47,7 +48,7 @@ class ArticleController extends Controller {
 	 */
 	public function show($id)
 	{
-		$article = Article::with('user')->find($id);
+		$article = Article::with('user', 'tags')->find($id);
 
         if(is_null($article)) {
             abort(404);

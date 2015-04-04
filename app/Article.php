@@ -34,4 +34,13 @@ class Article extends Model {
         return Str::limit($this->body, 200, '...');
     }
 
+    /**
+     * Get the tags associated with the given article
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }
