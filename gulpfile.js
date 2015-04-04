@@ -19,7 +19,7 @@ elixir(function(mix) {
     mix
         .sass(
             [
-                "style.scss",
+                "frontend/style.scss",
                 "backend/backend.scss"
             ], 'public/css/',
             {includePaths: [paths.bootstrap + 'stylesheets/',
