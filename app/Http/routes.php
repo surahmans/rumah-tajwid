@@ -16,6 +16,8 @@ Route::get('articles/{id}', 'ArticleController@category');
 
 Route::get('article/{id}', 'ArticleController@show');
 
+Route::get('tag/{id}', 'ArticleController@tag');
+
 Event::listen('illuminate.query', function($query)
 {
     \Log::debug($query);

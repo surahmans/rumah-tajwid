@@ -93,10 +93,12 @@ class ArticleController extends Controller {
 		//
 	}
 
+
     /**
-     * Show articles by category
+     * Get articles by category id
      *
      * @param $id
+     * @return \Illuminate\View\View
      */
     public function category($id)
     {
@@ -118,6 +120,23 @@ class ArticleController extends Controller {
             $query->whereIn('id', $article->tags()->lists('id'));
         })->whereNotIn('id', [$article->id])->orderBy('id', 'DESC')->take(3)->get();
         return $related;
+    }
+
+    /**
+     * Get articles by tag id
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function tag($id)
+    {
+        $amount = Configuration::where('name', 'paginate')->first();
+
+        $articles = Article::whereHas('tags', function($query) use ($id) {
+            $query->where('id', $id);
+        })->orderBy('id', 'DESC')->paginate($amount->value);
+
+        return view('front.tag', compact('articles'));
     }
 
 }
