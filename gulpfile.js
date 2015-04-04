@@ -18,10 +18,15 @@ var paths = {
 elixir(function(mix) {
     mix
         .sass(
-            "style.scss", 'public/css/',
-                {includePaths: [paths.bootstrap + 'stylesheets/',
-                                paths.bower + 'bourbon/app/assets/stylesheets/',
-                                paths.bower + 'fontawesome/scss/']})
+            [
+                "style.scss",
+                "backend/backend.scss"
+            ], 'public/css/',
+            {includePaths: [paths.bootstrap + 'stylesheets/',
+                paths.bower + 'bourbon/app/assets/stylesheets/',
+                paths.bower + 'fontawesome/scss/',
+                paths.bower + 'uikit/scss/']}
+        )
         .copy(
             paths.bootstrap + 'fonts/bootstrap/', 'public/fonts/bootstrap/',
             paths.bower + 'modernizr/modernizr.js', 'public/js/modernizr.js',
