@@ -50,7 +50,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
      */
     public function composePopular()
     {
-        view()->composer('front.partials.sidebar', function ($view) {
+        view()->composer(['front.partials.sidebar', 'front.partials.news'], function ($view) {
             $popular = Article::all()->sortByDesc('views')->take(5);
             $view->with('popular', $popular);
         });
