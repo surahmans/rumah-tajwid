@@ -28,6 +28,13 @@ class ConfigsTableSeeder extends Seeder {
                 'name'  => 'twitter',
                 'value' => 'rumah_tajwid'
             ],
+            [
+                'name'  => 'alamat',
+                'value' => 'Kantor: Jl. Jeruk III No. 106, Depok Jaya <br>
+                            Pancoran Mas, Depok <br>
+                            Telp: (021) 7721 3881 <br>
+                            E-Mail: rumahtajwid@yahoo.co.id'
+            ],
 
         ];
 

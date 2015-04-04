@@ -5,10 +5,11 @@
     </div>
     <div>
         <p>
-            Kantor: Jl. Jeruk III No. 106, Depok Jaya <br/>
-            Pancoran Mas, Depok <br/>
-            Telp: (021) 7721 3881 <br/>
-            E-Mail: rumahtajwid@yahoo.co.id <br/>
+            @foreach($configs as $config)
+                @if($config->name == "alamat")
+                    {!! $config->value  !!}
+                @endif
+            @endforeach
         </p>
     </div>
 </div>
