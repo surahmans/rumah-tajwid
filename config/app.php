@@ -146,6 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
         'App\Providers\ViewComposerServiceProvider',
         'Jenssegers\Date\DateServiceProvider',
+        'Collective\Html\HtmlServiceProvider',
 
 	],
 
@@ -195,6 +196,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
         'Date'      => 'Jenssegers\Date\Date',
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
 
 	],
 
