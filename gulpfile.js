@@ -36,5 +36,10 @@ elixir(function(mix) {
             paths.bower + "jquery-1.9.1.min/index.js",
             paths.bootstrap + "javascripts/bootstrap.js",
             "/resources/assets/js/custom.js"
-        ], 'public/js/app.js', './');
+        ], 'public/js/app.js', './')
+        .scripts(
+        [
+            paths.bower + "jquery-1.9.1.min/index.js",
+            paths.bower + "uikit/js/uikit.min.js",
+        ], 'public/js/back.js', './');
 });
