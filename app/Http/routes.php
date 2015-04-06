@@ -18,6 +18,12 @@ Route::get('article/{id}', 'ArticleController@show');
 
 Route::get('tag/{id}', 'ArticleController@tag');
 
+Route::post('authenticate', 'AuthController@authenticate');
+
+Route::get('login', function() {
+    return view('admin.login');
+});
+
 Event::listen('illuminate.query', function($query)
 {
     \Log::debug($query);
