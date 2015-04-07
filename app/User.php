@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -34,6 +35,32 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function articles()
     {
         return $this->hasMany('App\Article');
+    }
+
+    /**
+     * Check if the user an author
+     *
+     * @return bool
+     */
+    public function isAnAuthor()
+    {
+        if (Auth::user()->level == 'author')
+        {
+            return true;
+        }
+    }
+
+    /**
+     * Check if the user an admin
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        if (Auth::user()->level == 'admin')
+        {
+            return true;
+        }
     }
 
 }

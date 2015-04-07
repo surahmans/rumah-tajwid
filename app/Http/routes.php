@@ -18,10 +18,27 @@ Route::get('article/{id}', 'ArticleController@show');
 
 Route::get('tag/{id}', 'ArticleController@tag');
 
+//Auth controller for handle user
 Route::post('authenticate', 'AuthController@authenticate');
-
+Route::get('logout', 'AuthController@logout');
 Route::get('login', function() {
     return view('admin.login');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
+{
+    Route::get('/', function()
+    {
+        return view('admin.administrator');
+    });
+});
+
+Route::group(['prefix' => 'author', 'middleware' => 'author'], function()
+{
+    Route::get('/', function()
+    {
+        return view('admin.author');
+    });
 });
 
 Event::listen('illuminate.query', function($query)

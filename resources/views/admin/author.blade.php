@@ -1,0 +1,1 @@
+Your are an <h1>{{ Auth::user()->level }}</h1>

@@ -15,10 +15,22 @@ class AuthController extends Controller {
     {
         if (Auth::attempt(['email' => Request::input('email'), 'password' => Request::input('password')]))
         {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/admin');
         } else {
             return redirect()->back();
         }
+    }
+
+    /**
+     * User logout
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/login');
     }
 
 }
