@@ -17,6 +17,9 @@ class AuthController extends Controller {
         {
             return redirect()->intended('/admin');
         } else {
+
+            session()->flash('unsuccessful', 'Username atau password yang Anda masukan salah!');
+
             return redirect()->back();
         }
     }

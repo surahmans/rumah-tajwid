@@ -15,6 +15,17 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        @if(Session::has('unsuccessful'))
+            <div class="uk-grid uk-text-center">
+                <div class="uk-width-5-10 uk-container-center uk-margin-large-top">
+                    <div class="uk-alert uk-alert-warning" data-uk-alert>
+                        <a href="#" class="uk-alert-close uk-close"></a>
+                        <p>{{ session('unsuccessful') }}</p>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="uk-grid uk-text-center">
             <div class="uk-container-center uk-margin-large-top" style="width: 250px">
                 <h1>Log in</h1>
