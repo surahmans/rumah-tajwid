@@ -147,6 +147,7 @@ return [
         'App\Providers\ViewComposerServiceProvider',
         'Jenssegers\Date\DateServiceProvider',
         'Collective\Html\HtmlServiceProvider',
+        'yajra\Datatables\DatatablesServiceProvider',
 
 	],
 
@@ -198,6 +199,7 @@ return [
         'Date'      => 'Jenssegers\Date\Date',
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'Datatables'      => 'yajra\Datatables\Datatables',
 
 	],
 
