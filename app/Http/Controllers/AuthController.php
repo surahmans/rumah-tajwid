@@ -2,7 +2,7 @@
 
 use Auth;
 use Request;
-use Illuminate\Routing\Controller;
+
 
 class AuthController extends Controller {
 
