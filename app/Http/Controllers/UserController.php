@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Support\Facades\Session;
-use Request;
 use Illuminate\Support\Facades\Schema;
 use yajra\Datatables\Datatables;
 
@@ -36,9 +36,9 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(UserRequest $request)
 	{
-		$user = User::create(Request::all());
+		$user = User::create($request->all());
 
         Session::flash('successMessage', 'Berhasil menambahkan ' . $user->name);
 
