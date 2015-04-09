@@ -11,7 +11,9 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+        $this->publishes([
+            __DIR__.'/../../vendor/datatables/datatables/media' => public_path('package/datatable'),
+        ], 'public');
 	}
 
 	/**
