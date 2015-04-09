@@ -31,7 +31,6 @@
                 </div>
             </div>
 
-            @yield('')
 		<!-- jQuery and Bootstrap -->
 		<script src="{{ asset('js/app.js') }}"></script>
 	</body>

@@ -4,7 +4,7 @@
         <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav>
             @unless(Auth::user()->level == 'author')
                 <li class="uk-nav-divider"></li>
-                <li><a href="#">User</a></li>
+                <li><a href="{{ url('admin/user') }}">User</a></li>
                 <li class="uk-parent">
                     <a href="#">Menu</a>
                     <ul class="uk-nav-sub">
