@@ -1,10 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Request;
 use Illuminate\Support\Facades\Schema;
 use yajra\Datatables\Datatables;
 
@@ -18,7 +18,7 @@ class UserController extends Controller {
 	public function index()
 	{
 
-		return view('admin.administrator');
+		return view('admin.users.index');
 	}
 
 	/**
@@ -28,7 +28,7 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('admin.users.create');
 	}
 
 	/**
@@ -38,7 +38,11 @@ class UserController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$user = User::create(Request::all());
+
+        Session::flash('successMessage', 'Berhasil menambahkan ' . $user->name);
+
+        return view('admin.users.index');
 	}
 
 	/**
