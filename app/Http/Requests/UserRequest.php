@@ -23,7 +23,7 @@ class UserRequest extends Request {
 	{
 		return [
 			'name'      => 'alpha|required|min:3',
-            'email'     => 'email|required|unique:users',
+            'email'     => 'email|required|unique:users,email,'.$this->segment(3),
             'password'  => 'required|min:6|confirmed',
             'password_confirmation' => ''
 		];
