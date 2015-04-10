@@ -28,4 +28,15 @@
 
 @section('script')
     @include('admin.partials.datatables.users')
+    <script type="text/javascript">
+        function pesan() {
+            $result = confirm('Apakah Anda yakin ingin menghapusnya?');
+
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
 @stop

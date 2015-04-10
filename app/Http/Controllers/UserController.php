@@ -100,9 +100,12 @@ class UserController extends Controller {
 
         Session::flash('successMessage', 'Pengguna tersebut berhasil dihapus');
 
-        return view('admin.users.index');
+        return Redirect::route('admin.user.index');
 	}
 
+    /**
+     * Get data for datatables
+     */
     public function data()
     {
         $users = User::select(Schema::getColumnListing('users'));
@@ -110,19 +113,22 @@ class UserController extends Controller {
         return Datatables::of($users)
             ->add_column('actions',
 
-                '<a href={{ action("UserController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o" alt="hapus">Ubah</a>' .
+                '<a href={{ action("UserController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>' .
                  $this->deleteForm('{{$id}}')
-
-
             )
             ->make(true);
-
     }
 
+    /**
+     * Make delete button to handling delete user
+     *
+     * @param $id
+     * @return string
+     */
     public function deleteForm($id)
     {
         $html = FormFacade::open(array('url' => 'admin/user/'.$id, 'method' => 'DELETE', 'class' => 'uk-display-inline uk-margin-left'));
-        $html .= FormFacade::submit("Hapus", array('class' => 'uk-button uk-button-primary uk-button-small uk-border-rounded'));
+        $html .= FormFacade::submit("Hapus", array('class' => 'uk-button uk-button-primary uk-button-small uk-border-rounded', 'onClick' => 'return pesan();'));
         $html .= FormFacade::close();
 
         return $html;
