@@ -4,6 +4,8 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\UserRequest;
 use App\User;
+use Collective\Html\FormFacade;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Schema;
 use yajra\Datatables\Datatables;
@@ -65,6 +67,7 @@ class UserController extends Controller {
 	public function edit($id)
 	{
         $user = User::findOrFail($id);
+
 		return view('admin.users.update', compact('user'));
 	}
 
@@ -80,7 +83,9 @@ class UserController extends Controller {
 
         $user->update($request->all());
 
-        return view('admin.users.index');
+        Session::flash('successMessage', 'Berhasil mengubah data pengguna dengan nama ' . $user->name);
+
+        return Redirect::route('admin.user.index');
 	}
 
 	/**
@@ -91,7 +96,11 @@ class UserController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        User::destroy($id);
+
+        Session::flash('successMessage', 'Pengguna tersebut berhasil dihapus');
+
+        return view('admin.users.index');
 	}
 
     public function data()
@@ -101,10 +110,21 @@ class UserController extends Controller {
         return Datatables::of($users)
             ->add_column('actions',
 
-                '<a href={{ action("UserController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o" alt="hapus"> </a>' .
-                ' <a href={{ action("UserController@destroy", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-trash-o"> </a>'
+                '<a href={{ action("UserController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o" alt="hapus">Ubah</a>' .
+                 $this->deleteForm('{{$id}}')
+
+
             )
             ->make(true);
 
+    }
+
+    public function deleteForm($id)
+    {
+        $html = FormFacade::open(array('url' => 'admin/user/'.$id, 'method' => 'DELETE', 'class' => 'uk-display-inline uk-margin-left'));
+        $html .= FormFacade::submit("Hapus", array('class' => 'uk-button uk-button-primary uk-button-small uk-border-rounded'));
+        $html .= FormFacade::close();
+
+        return $html;
     }
 }

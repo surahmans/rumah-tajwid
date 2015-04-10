@@ -9,7 +9,7 @@
                  {data: 'name', name: 'name', title: 'Name'},
                  {data: 'email', name: 'email', title: 'Email'},
                  {data: 'level', name: 'level', title: 'Level', searchable: false, orderable: false, width: '1%', className: "uk-text-center"},
-                 {data: 'actions', name: 'actions', title: 'Actions', searchable: false, orderable: false, width: '1%', className: "uk-text-center"},
+                 {data: 'actions', name: 'actions', title: 'Actions', searchable: false, orderable: false, width: '15%', className: "uk-text-center"},
              ]
          });
     });
