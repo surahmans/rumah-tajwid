@@ -22,7 +22,7 @@ class MenuRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name'  => 'required|alpha',
+			'name'  => 'required',
             'page'  => 'required|min:1'
 		];
 	}

@@ -22,7 +22,7 @@ class UserRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name'      => 'alpha|required|min:3',
+			'name'      => 'required|min:3',
             'email'     => 'email|required|unique:users,email,'.$this->segment(3),
             'password'  => 'required|min:6|confirmed',
             'password_confirmation' => ''
