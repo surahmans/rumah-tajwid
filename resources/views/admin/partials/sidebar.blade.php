@@ -8,7 +8,7 @@
                 <li class="uk-parent">
                     <a href="#">Menu</a>
                     <ul class="uk-nav-sub">
-                        <li><a href="#">Parent</a></li>
+                        <li><a href="{{ url('admin/menu') }}">Parent</a></li>
                         <li><a href="#">Child</a></li>
                     </ul>
                 </li>

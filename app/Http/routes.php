@@ -35,6 +35,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/user/data', ['as' => 'admin.user.data', 'uses' => 'UserController@data'] );
 
     Route::resource('/user', 'UserController');
+
+    Route::get('/menu/data', ['as' => 'admin.menu.data', 'uses' => 'MenuController@data']);
+
+    Route::resource('/menu', 'MenuController');
 });
 
 Route::group(['prefix' => 'author', 'middleware' => 'author'], function()
