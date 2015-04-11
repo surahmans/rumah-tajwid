@@ -96,7 +96,7 @@ class UserController extends Controller {
 	 */
 	public function destroy($id)
 	{
-        User::destroy($id);
+        User::findOrFail($id)->delete();
 
         Session::flash('successMessage', 'Pengguna tersebut berhasil dihapus');
 

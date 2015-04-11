@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\MenuRequest;
 use App\Menu;
+use App\User;
+use Collective\Html\FormFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -97,7 +99,11 @@ class MenuController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Menu::findOrFail($id)->delete();
+
+        Session::flash('successMessage', 'Menu tersebut berhasil dihapus');
+
+        return Redirect::route('admin.menu.index');
 	}
 
     public function data()
@@ -107,9 +113,25 @@ class MenuController extends Controller {
         return Datatables::of($menu)
             ->add_column('actions',
 
-                '<a href={{ action("MenuController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>'
+                '<a href={{ action("MenuController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>' .
+                $this->deleteForm('{{$id}}')
             )
             ->make(true);
+    }
+
+    /**
+     * Make delete button to handling delete menu
+     *
+     * @param $id
+     * @return string
+     */
+    public function deleteForm($id)
+    {
+        $html = FormFacade::open(array('url' => 'admin/menu/'.$id, 'method' => 'DELETE', 'class' => 'uk-display-inline uk-margin-left'));
+        $html .= FormFacade::submit("Hapus", array('class' => 'uk-button uk-button-primary uk-button-small uk-border-rounded', 'onClick' => 'return pesan();'));
+        $html .= FormFacade::close();
+
+        return $html;
     }
 
 }
