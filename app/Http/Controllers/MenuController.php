@@ -3,10 +3,13 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\MenuRequest;
 use App\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use yajra\Datatables\Datatables;
 
 class MenuController extends Controller {
@@ -28,7 +31,7 @@ class MenuController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('admin.menu.create');
 	}
 
 	/**
@@ -36,9 +39,13 @@ class MenuController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(MenuRequest $request)
 	{
-		//
+		$menu = Menu::create($request->all());
+
+        Session::flash('successMessage', 'Menu ' . $menu->name . ' berhasil ditambahkan.');
+
+        return Redirect::route('admin.menu.index');
 	}
 
 	/**
