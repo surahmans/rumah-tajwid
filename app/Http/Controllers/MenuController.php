@@ -67,7 +67,9 @@ class MenuController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$menu = Menu::findOrFail($id);
+
+        Return view('admin.menu.update', compact('menu'));
 	}
 
 	/**
@@ -76,9 +78,15 @@ class MenuController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, MenuRequest $request)
 	{
-		//
+		$menu = Menu::findOrFail($id);
+
+        $menu->update($request->all());
+
+        Session::flash('successMessage', 'Menu ' . $menu->name . ' berhasil diubah.');
+
+        return Redirect::route('admin.menu.index');
 	}
 
 	/**
