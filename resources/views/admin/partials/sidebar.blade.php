@@ -9,7 +9,7 @@
                     <a href="#">Menu</a>
                     <ul class="uk-nav-sub">
                         <li><a href="{{ url('admin/menu') }}">Parent</a></li>
-                        <li><a href="#">Child</a></li>
+                        <li><a href="{{ url('admin/submenu') }}">Child</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Slide</a></li>
