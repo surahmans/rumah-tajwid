@@ -15,7 +15,7 @@
 <div class="uk-form-row">
     <label class="uk-form-label" for="page">Parent Menu</label>
     <div class="uk-form-controls">
-        {!! Form::select('parent_id', $parentIds, array('class' => 'uk-form-large uk-form-width-large')) !!}
+        {!! Form::select('parent_id', $parentIds, null, array('class' => 'uk-form-large uk-form-width-large')) !!}
     </div>
 </div>
 

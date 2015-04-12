@@ -68,7 +68,11 @@ class SubmenuController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$submenu = Menu::findOrFail($id);
+
+        $parentIds = Menu::whereNull('parent_id')->lists('name', 'id');
+
+        return view('admin.submenu.update', compact('submenu', 'parentIds'));
 	}
 
 	/**
@@ -77,9 +81,15 @@ class SubmenuController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, MenuRequest $request)
 	{
-		//
+		$submenu = Menu::findOrFail($id);
+
+        $submenu->update($request->all());
+
+        Session::flash('successMessage', 'Submenu ' . $submenu->name . ' berhasil diubah');
+
+        return Redirect::route('admin.submenu.index');
 	}
 
 	/**
