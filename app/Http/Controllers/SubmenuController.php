@@ -3,9 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\MenuRequest;
 use App\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use yajra\Datatables\Datatables;
 
 class SubmenuController extends Controller {
@@ -27,7 +30,9 @@ class SubmenuController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        $parentIds = Menu::whereNull('parent_id')->lists('name', 'id');
+
+        return view('admin.submenu.create', compact('parentIds'));
 	}
 
 	/**
@@ -35,9 +40,13 @@ class SubmenuController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(MenuRequest $request)
 	{
-		//
+		$submenu = Menu::create($request->all());
+
+        Session::flash('successMessage', 'Berhasil menambahkan submenu ' . $submenu->name);
+
+        return Redirect::route('admin.submenu.index');
 	}
 
 	/**
