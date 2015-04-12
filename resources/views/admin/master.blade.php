@@ -39,5 +39,6 @@
 		<script src="{{ asset('js/back.js') }}"></script>
 		<script src="{{ asset('package/datatable/js/jquery.dataTables.min.js') }}"></script>
 		@yield('script')
+		@include('admin.partials.slideup')
 	</body>
 </html>
