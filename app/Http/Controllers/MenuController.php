@@ -106,9 +106,12 @@ class MenuController extends Controller {
         return Redirect::route('admin.menu.index');
 	}
 
+    /**
+     * Get data for datatables
+     */
     public function data()
     {
-        $menu = Menu::select(Schema::getColumnListing('menu'))->whereNull('parent_id');
+        $menu = Menu::with('submenu')->whereNull('parent_id');
 
         return Datatables::of($menu)
             ->add_column('actions',
