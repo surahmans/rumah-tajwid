@@ -12,7 +12,7 @@
                         <li><a href="{{ url('admin/submenu') }}">Child</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Slide</a></li>
+                <li><a href="{{ url('admin/slide') }}">Slide</a></li>
                 <li><a href="#">Category</a></li>
                 <li class="uk-nav-divider"></li>
                 <li class="uk-nav-header">Config</li>

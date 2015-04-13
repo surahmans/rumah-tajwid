@@ -43,6 +43,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/submenu/data', ['as' => 'admin.submenu.data', 'uses' => 'SubmenuController@data']);
 
     Route::resource('/submenu', 'SubmenuController');
+
+    Route::get('/slide/data', ['as' => 'admin.slide.data', 'uses' => 'SlideController@data']);
+
+    Route::resource('/slide', 'SlideController');
 });
 
 Route::group(['prefix' => 'author', 'middleware' => 'author'], function()
