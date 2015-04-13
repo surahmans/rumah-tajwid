@@ -13,6 +13,16 @@ use yajra\Datatables\Datatables;
 class SlideController extends Controller {
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        return view('admin.slide.index');
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  int $id
