@@ -12,7 +12,8 @@ class Article extends Model {
         'title',
         'body',
         'user_id',
-        'slug'
+        'slug',
+        'slide'
     ];
 
     public function user()
