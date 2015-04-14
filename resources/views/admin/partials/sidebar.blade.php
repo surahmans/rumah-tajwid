@@ -13,7 +13,7 @@
                     </ul>
                 </li>
                 <li><a href="{{ url('admin/slide') }}">Slide</a></li>
-                <li><a href="#">Category</a></li>
+                <li><a href="{{ url('admin/category') }}">Category</a></li>
                 <li class="uk-nav-divider"></li>
                 <li class="uk-nav-header">Config</li>
                 <li><a href="#">Basic</a></li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use yajra\Datatables\Datatables;
 
 class CategoryController extends Controller {
 
@@ -16,7 +17,7 @@ class CategoryController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return view('admin.category.index');
 	}
 
 	/**
@@ -82,5 +83,20 @@ class CategoryController extends Controller {
 	{
 		//
 	}
+
+    /**
+     * Get data for datatables
+     */
+    public function data()
+    {
+        $category = Category::select('*');
+
+        return Datatables::of($category)
+            ->add_column('actions',
+
+                '<a href={{ action("CategoryController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>'
+            )
+            ->make(true);
+    }
 
 }
