@@ -4,8 +4,12 @@ use App\Category;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use yajra\Datatables\Datatables;
 
 class CategoryController extends Controller {
@@ -27,7 +31,7 @@ class CategoryController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('admin.category.create');
 	}
 
 	/**
@@ -35,9 +39,17 @@ class CategoryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CategoryRequest $request)
 	{
-		//
+        $name = $request->name;
+
+        $data = array('slug' => Str::slug($name), 'name' => $name);
+
+		$category = Category::create($data);
+
+        Session::flash('successMessage', 'Kategori ' . $category->name . ' berhasil ditambahkan.');
+
+        return Redirect::route('admin.category.index');
 	}
 
 	/**

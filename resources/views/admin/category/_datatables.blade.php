@@ -2,7 +2,7 @@
     $(document).ready(function() {
          oTable = $('#category').DataTable({
              "processing": true,
-             "serverSide": false,
+             "serverSide": true,
              "order": [0, 'asc'],
              "ajax": "{!! URL::route('admin.category.data') !!}",
              "columns": [
