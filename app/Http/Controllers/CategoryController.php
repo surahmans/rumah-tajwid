@@ -71,7 +71,9 @@ class CategoryController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $category = Category::findOrFail($id);
+
+		return view('admin.category.update', compact('category'));
 	}
 
 	/**
@@ -80,9 +82,19 @@ class CategoryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, CategoryRequest $request)
 	{
-		//
+		$category = Category::findOrFail($id);
+
+        $name = $request->name;
+
+        $data = array('name' => $name, 'slug' => Str::slug($name));
+
+        $category->update($data);
+
+        Session::flash('successMessage', 'Kategori tersebut berhasil diubah.');
+
+        return Redirect::route('admin.category.index');
 	}
 
 	/**
