@@ -1,11 +1,8 @@
-@foreach($configs as $config)
-    @if($config->name == "facebook")
-        <div class="col-xs-12 col-md-4">
-            <h3>Facebook</h3>
-            <div class="fb-like-box" data-href="{{ $config->value }}" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-        </div>
-    @endif
-@endforeach
+
+<div class="col-xs-12 col-md-4">
+    <h3>Facebook</h3>
+    <div class="fb-like-box" data-href="{{ $configs->facebook }}" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+</div>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

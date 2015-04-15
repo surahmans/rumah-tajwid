@@ -85,8 +85,8 @@ class ViewComposerServiceProvider extends ServiceProvider {
      */
     public function composeConfig()
     {
-        view()->composer('front.partials.footer',  function($view) {
-            $configs = Configuration::all();
+        view()->composer(['front.partials.footer', 'front.partials.articles', 'front.main'],  function($view) {
+            $configs = Configuration::first();
             $view->with('configs', $configs);
         });
     }

@@ -5,11 +5,7 @@
     </div>
     <div>
         <p>
-            @foreach($configs as $config)
-                @if($config->name == "alamat")
-                    {!! $config->value  !!}
-                @endif
-            @endforeach
+            {!! $configs->address  !!}
         </p>
     </div>
 </div>
@@ -17,11 +13,7 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 <script type="text/javascript">
-    @foreach($configs as $config)
-        @if($config->name == "maps")
-            var myLatlng = new google.maps.LatLng({{ $config->value  }});
-        @endif
-    @endforeach
+    var myLatlng = new google.maps.LatLng({{ $configs->maps  }});
 
     var myOptions = {
       zoom: 16,

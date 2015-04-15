@@ -6,7 +6,7 @@
 
                 @if($col > 0)
                         <?php $col--; //rest of column ?>
-                        <?php $limit = 5; $latest = 1; ?>
+                        <?php $limit = $configs->category; $latest = 1; ?>
 
                         @if($limit > count($blog->articles))
                             <?php $limit = count($blog->articles); ?>
@@ -36,7 +36,7 @@
                             <?php $limit--; ?>
 
                             @if($limit <= 0 || count($blog->articles) == 0)
-                                                    <a href="{{ action('ArticleController@category', [$blog->id]) }}" class="more">More Articles</a>
+                                                    <a href="{{ action('ArticleController@category', [$blog->id]) }}" class="more">{{ $configs->viewall }}</a>
                                                 </div> <!-- Blog links -->
                                             </div> <!-- Blog -->
                                         </div> <!-- Blog panel body -->

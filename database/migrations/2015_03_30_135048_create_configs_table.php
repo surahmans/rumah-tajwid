@@ -15,8 +15,15 @@ class CreateConfigsTable extends Migration {
 		Schema::create('configs', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->string('name');
-            $table->string('value');
+            $table->tinyInteger('slide');
+            $table->tinyInteger('category');
+            $table->tinyInteger('perpage');
+            $table->string('viewall');
+            $table->string('readmore');
+            $table->string('maps');
+            $table->string('address');
+            $table->string('facebook');
+            $table->string('twitter');
 		});
 	}
 

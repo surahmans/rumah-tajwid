@@ -102,9 +102,9 @@ class ArticleController extends Controller {
      */
     public function category($id)
     {
-        $amount = Configuration::where('name', 'paginate')->first();
+        $amount = Configuration::first();
 
-        $articles = Article::where('category_id', $id)->paginate($amount->value);
+        $articles = Article::where('category_id', $id)->paginate($amount->perpage);
 
         return view('front.category', compact('articles'));
     }
@@ -130,11 +130,11 @@ class ArticleController extends Controller {
      */
     public function tag($id)
     {
-        $amount = Configuration::where('name', 'paginate')->first();
+        $amount = Configuration::first();
 
         $articles = Article::whereHas('tags', function($query) use ($id) {
             $query->where('id', $id);
-        })->orderBy('id', 'DESC')->paginate($amount->value);
+        })->orderBy('id', 'DESC')->paginate($amount->perpage);
 
         return view('front.tag', compact('articles'));
     }
