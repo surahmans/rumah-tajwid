@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use yajra\Datatables\Datatables;
 
 class ArticleController extends Controller {
 
@@ -17,7 +18,7 @@ class ArticleController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return view('admin.article.index');
 	}
 
 	/**
@@ -139,4 +140,18 @@ class ArticleController extends Controller {
         return view('front.tag', compact('articles'));
     }
 
+    /**
+     * Get data for datatables
+     */
+    public function data()
+    {
+        $articles = Article::with('user');
+
+        return Datatables::of($articles)
+            ->add_column('actions',
+
+                '<a href={{ action("ArticleController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>'
+            )
+            ->make(true);
+    }
 }

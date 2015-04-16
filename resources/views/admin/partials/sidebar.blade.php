@@ -26,7 +26,7 @@
                 </li>
             @endunless
             <li class="uk-nav-divider"></li>
-            <li><a href="#">Articles</a></li>
+            <li><a href="{{ url('admin/article') }}">Articles</a></li>
         </ul>
     </div>
 </aside>
