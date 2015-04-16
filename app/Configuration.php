@@ -6,7 +6,17 @@ class Configuration extends Model {
 
     protected $table = 'configs';
 
-	protected $fillable = ['name', 'value'];
+    public $timestamps = false;
 
+	protected $fillable = [
+        'category',
+        'perpage',
+        'viewall',
+        'readmore',
+        'maps',
+        'address',
+        'facebook',
+        'twitter'
+    ];
 
 }
