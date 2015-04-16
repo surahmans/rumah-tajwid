@@ -13,7 +13,6 @@ class ConfigsTableSeeder extends Seeder {
 
         $config = [
             [
-                'slide'     => 4,
                 'category'  => 5,
                 'perpage'   => 3,
                 'viewall'   => 'Lihat semua...',

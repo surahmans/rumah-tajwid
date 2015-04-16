@@ -51,6 +51,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/category/data', ['as' => 'admin.category.data', 'uses' => 'CategoryController@data']);
 
     Route::resource('/category', 'CategoryController');
+
+    Route::get('/basic', ['as' => 'admin.config', 'uses' => 'ConfigurationController@index']);
+
+    Route::PUT('/basic/{id}', 'ConfigurationController@update');
 });
 
 Route::group(['prefix' => 'author', 'middleware' => 'author'], function()

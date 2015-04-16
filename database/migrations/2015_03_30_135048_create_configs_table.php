@@ -15,9 +15,8 @@ class CreateConfigsTable extends Migration {
 		Schema::create('configs', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->tinyInteger('slide');
-            $table->tinyInteger('category');
-            $table->tinyInteger('perpage');
+            $table->tinyInteger('category')->unsigned();
+            $table->tinyInteger('perpage')->unsigned();
             $table->string('viewall');
             $table->string('readmore');
             $table->string('maps');

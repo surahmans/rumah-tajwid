@@ -16,7 +16,7 @@
                 <li><a href="{{ url('admin/category') }}">Category</a></li>
                 <li class="uk-nav-divider"></li>
                 <li class="uk-nav-header">Config</li>
-                <li><a href="#">Basic</a></li>
+                <li><a href="{{ url('admin/basic') }}">Basic</a></li>
                 <li class="uk-parent">
                     <a href="#">Sidebar</a>
                     <ul class="uk-nav-sub">
