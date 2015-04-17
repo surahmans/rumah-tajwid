@@ -10,7 +10,7 @@
             <hr/>
 
             <p>
-                {{ $article->body }}
+                {!! $article->body !!}
             </p>
 
             <div class="share">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use yajra\Datatables\Datatables;
 
 class ArticleController extends Controller {
@@ -69,18 +70,25 @@ class ArticleController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$article = Article::findOrFail($id);
+
+        return view('admin.article.update', compact('article'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @param Request $requests
+     * @return Response
+     */
+	public function update($id, Request $requests)
 	{
-		//
+		$article = Article::findOrFail($id);
+
+        $article->update($requests->all());
+
+        return Redirect::route('admin.article.index');
 	}
 
 	/**

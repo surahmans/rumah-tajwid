@@ -25,6 +25,10 @@ Route::get('login', function() {
     return view('admin.login');
 });
 
+Route::group(['middleware' => 'auth'], function(){
+    Route::controller('filemanager', 'FilemanagerLaravelController');
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 {
     Route::get('/', function()
@@ -58,7 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
     Route::get('/article/data', ['as' => 'admin.article.data', 'uses' => 'ArticleController@data']);
 
-    Route::resource('/article', 'ArticleController');
+    Route::resource('/article', 'ArticleController', ['except' => ['show']]);
 });
 
 Route::group(['prefix' => 'author', 'middleware' => 'author'], function()

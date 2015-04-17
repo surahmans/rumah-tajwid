@@ -148,6 +148,7 @@ return [
         'Jenssegers\Date\DateServiceProvider',
         'Collective\Html\HtmlServiceProvider',
         'yajra\Datatables\DatatablesServiceProvider',
+        'Pqb\FilemanagerLaravel\FilemanagerLaravelServiceProvider',
 
 	],
 
@@ -200,6 +201,7 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         'Datatables'      => 'yajra\Datatables\Datatables',
+        'FilemanagerLaravel'=> 'Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel',
 
 	],
 
