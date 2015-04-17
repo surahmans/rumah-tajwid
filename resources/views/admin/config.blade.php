@@ -30,3 +30,12 @@
 
     @include('admin.partials.config_form')
 @stop
+
+@section('script')
+    <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="{{ url('') }}/tinymce/tinymce_editor.js"></script>
+    <script type="text/javascript">
+        editor_config.selector = "textarea";
+        tinymce.init(editor_config);
+    </script>
+@stop

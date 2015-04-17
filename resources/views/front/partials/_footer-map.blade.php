@@ -5,9 +5,7 @@
     </div>
     <div>
         <br/>
-        <p>
-            {!! $configs->address  !!}
-        </p>
+        {!! $configs->address  !!}
     </div>
 </div>
 
