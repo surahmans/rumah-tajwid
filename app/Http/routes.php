@@ -63,6 +63,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/article/data', ['as' => 'admin.article.data', 'uses' => 'ArticleController@data']);
 
     Route::resource('/article', 'ArticleController', ['except' => ['show']]);
+
+    Route::resource('/widget', 'WidgetController', ['only' => ['index', 'update']]);
 });
 
 Route::group(['prefix' => 'author', 'middleware' => 'author'], function()

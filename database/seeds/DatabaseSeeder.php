@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('ConfigsTableSeeder');
         $this->call('TagsTableSeeder');
         $this->call('ArticleTagTableSeeder');
+        $this->call('WidgetTableSeeder');
 	}
 
 }

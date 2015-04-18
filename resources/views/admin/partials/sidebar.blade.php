@@ -17,12 +17,7 @@
                 <li class="uk-nav-divider"></li>
                 <li class="uk-nav-header">Config</li>
                 <li><a href="{{ url('admin/basic') }}">Basic</a></li>
-                <li class="uk-parent">
-                    <a href="#">Sidebar</a>
-                    <ul class="uk-nav-sub">
-                        <li><a href="#">Top</a></li>
-                        <li><a href="#">Bottom</a></li>
-                    </ul>
+                <li><a href="{{ url('admin/widget') }}">Widgets</a>
                 </li>
             @endunless
             <li class="uk-nav-divider"></li>
