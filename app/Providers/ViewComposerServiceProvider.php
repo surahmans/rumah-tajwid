@@ -5,6 +5,7 @@ use App\Category;
 use App\Configuration;
 use App\Menu;
 
+use App\Widget;
 use Illuminate\Support\ServiceProvider;
 
 class ViewComposerServiceProvider extends ServiceProvider {
@@ -22,6 +23,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
         $this->composeBlogs();
         $this->composeConfig();
         $this->composeSlideshow();
+        $this->composeWidget();
     }
 
 	/**
@@ -99,6 +101,17 @@ class ViewComposerServiceProvider extends ServiceProvider {
         view()->composer('front.partials.slide', function($view) {
             $slides = Article::where('slide', 1)->orderBy('id', 'DESC')->get();
             $view->with('slides', $slides);
+        });
+    }
+
+    /**
+     * Get widget configuration
+     */
+    public function composeWidget()
+    {
+        view()->composer(['master', 'front.partials.sidebar'], function($view) {
+           $widget = Widget::first();
+            $view->with('widget', $widget);
         });
     }
 }

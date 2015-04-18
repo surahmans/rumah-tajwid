@@ -9,6 +9,7 @@
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen">
 		<script src="{{ asset('js/modernizr.js') }}"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/favicon.ico') }}"/>
+		{!! $widget->head !!}
 	</head>
 	<body>
         <!--[if lt IE 8]>
@@ -33,5 +34,6 @@
 
 		<!-- jQuery and Bootstrap -->
 		<script src="{{ asset('js/app.js') }}"></script>
+		{!! $widget->body !!}
 	</body>
 </html>

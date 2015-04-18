@@ -45,6 +45,7 @@
                 </div>
                 <div class="uk-width-3-10">
                     <p>Posisinya berada di atas sidebar utama (Populer, terkini, komentar).</p>
+                    <p>Format panel <a href="#format" data-uk-modal>di sini.</a></p>
                 </div>
             </div>
         </div>
@@ -57,6 +58,7 @@
                 </div>
                 <div class="uk-width-3-10">
                     <p>Posisinya berada di bawah sidebar utama (Populer, terkini, komentar).</p>
+                    <p>Format panel <a href="#format" data-uk-modal>di sini.</a></p>
                 </div>
             </div>
         </div>
@@ -68,5 +70,21 @@
         </div>
 
     {!! Form::close() !!}
+
+    <!-- Modal for format panel -->
+    <div class="uk-modal" id="format">
+        <div class="uk-modal-dialog">
+            <a href="#" class="uk-modal-close uk-close"></a>
+            &lt;div class=&quot;panel panel-info&quot;&gt; <br/>
+                &nbsp;&nbsp;&nbsp;&lt;div class=&quot;panel-heading&quot;&gt; <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 class=&quot;panel-title text-center&quot;&gt;&lt;strong&gt;<b>Ketik judul panel di sini</b>&lt;/strong&gt;&lt;/h3&gt; <br/>
+                &nbsp;&nbsp;&nbsp;&lt;/div&gt; <br/>
+                &nbsp;&nbsp;&nbsp;&lt;div class=&quot;panel-body&quot;&gt; <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<b>Ketikan kode atau isinya di sini.</b>&lt;/p&gt; <br/>
+                &nbsp;&nbsp;&nbsp;&lt;/div&gt; <br/>
+            &lt;/div&gt; <br/>
+        </div>
+    </div>
+    <!-- End of modal -->
 
 </div>
