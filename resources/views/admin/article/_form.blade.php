@@ -1,7 +1,21 @@
 <div class="uk-form-row">
+    <label class="uk-form-label" for="cover">Cover</label>
+    <div class="uk-form-controls">
+        {!! Form::file('cover') !!}
+    </div>
+</div>
+
+<div class="uk-form-row">
     <label class="uk-form-label" for="title">Judul</label>
     <div class="uk-form-controls">
         {!! Form::text('title', null, array('class' => 'uk-form-large uk-width-1-1')) !!}
+    </div>
+</div>
+
+<div class="uk-form-row">
+    <label class="uk-form-label" for="category">Kategori</label>
+    <div class="uk-form-controls">
+        {!! Form::select('category_id', $categories, array('class' => 'uk-form-large uk-width-1-1')) !!}
     </div>
 </div>
 

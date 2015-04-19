@@ -1,13 +1,19 @@
 <?php namespace App\Http\Controllers;
 
 use App\Article;
+use App\Category;
 use App\Configuration;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\ArticleRequest;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 use yajra\Datatables\Datatables;
 
 class ArticleController extends Controller {
@@ -29,7 +35,9 @@ class ArticleController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        $categories = Category::all()->lists('name', 'id');
+
+		return view('admin.article.create', compact('categories'));
 	}
 
 	/**
@@ -37,9 +45,30 @@ class ArticleController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(ArticleRequest $request)
 	{
-		//
+        $article = New Article($request->except('cover'));
+
+        Auth::user()->articles()->save($article);
+
+        $uploaded_image = $request->file('cover');
+
+        $extension = $uploaded_image->getClientOriginalExtension();
+        $filename = md5(time()) . '.' . $extension;
+
+        $destination_path = public_path() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'article';
+
+        $uploaded_image->move($destination_path, $filename);
+
+        $article->cover = $filename;
+
+        $article->published_at = Carbon::now();
+
+        $article->slug = $this->checkSlug(Str::slug($request->title), 1);
+
+        $article->save();
+
+        return view('admin.article.index');
 	}
 
 	/**
@@ -161,5 +190,31 @@ class ArticleController extends Controller {
                 '<a href={{ action("ArticleController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>'
             )
             ->make(true);
+    }
+
+    /**
+     * Generate unique slug
+     *
+     * @param $slug
+     * @param $no
+     * @return string
+     */
+    public function checkSlug($slug, $no)
+    {
+
+        if (Article::where('slug', $slug)->count()) {
+
+            $no += 1;
+            $no_slug = $no . '-' . $slug;
+
+            if (Article::where('slug', $no_slug)->count()) {
+                return $this->checkSlug($slug, $no);
+            } else {
+                return $no_slug;
+            }
+
+        } else {
+            return $slug;
+        }
     }
 }

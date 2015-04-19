@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration {
             $table->text('body');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->delete('cascade');
-            $table->date('published_at');
+            $table->timestamp('published_at');
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set NULL');
             $table->integer('views')->unsigned()->default(0);

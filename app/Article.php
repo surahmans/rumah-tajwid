@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -13,7 +14,8 @@ class Article extends Model {
         'body',
         'user_id',
         'slug',
-        'slide'
+        'slide',
+        'category_id'
     ];
 
     public function user()
@@ -44,4 +46,5 @@ class Article extends Model {
     {
         return $this->belongsToMany('App\Tag');
     }
+
 }
