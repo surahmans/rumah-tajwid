@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 use yajra\Datatables\Datatables;
 
 class ArticleController extends Controller {
@@ -68,7 +69,15 @@ class ArticleController extends Controller {
 
         $article->save();
 
-        return view('admin.article.index');
+        // open file a image resource
+        $img = Image::make($destination_path . DIRECTORY_SEPARATOR . $filename);
+
+        // crop the best fitting 5:3 (600x360) ratio and resize to 600x360 pixel
+        $img->fit(70, 70);
+
+        $img->save($destination_path . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR . $filename);
+
+        return Redirect::route('admin.article.index');
 	}
 
 	/**

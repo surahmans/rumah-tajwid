@@ -22,7 +22,7 @@
                                         <div class="panel-body">
                                             <div class="blog">
                                                 <div class="blog--latest">
-                                                    <img src="{{ 'images/slide/' . $article->cover }}" class="blog--latest--img img-rounded" alt=""/>
+                                                    <img src="{{ 'images/article/' . $article->cover }}" class="blog--latest--img img-rounded" alt=""/>
                                                     <h3 class="blog--latest--img__overlay img-rounded">
                                                         <a href="{{ action('ArticleController@show', [$article->id]) }}">{{ $article->title }}</a>
                                                     </h3>

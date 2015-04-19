@@ -149,6 +149,7 @@ return [
         'Collective\Html\HtmlServiceProvider',
         'yajra\Datatables\DatatablesServiceProvider',
         'Pqb\FilemanagerLaravel\FilemanagerLaravelServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
 
 	],
 
@@ -202,6 +203,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Datatables'      => 'yajra\Datatables\Datatables',
         'FilemanagerLaravel'=> 'Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel',
+        'Image' => 'Intervention\Image\Facades\Image',
 
 	],
 

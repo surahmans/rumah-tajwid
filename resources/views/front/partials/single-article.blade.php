@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
         <article class="article">
-            <img src="{{ asset('images/slide/' . $article->cover) }}" class="article--img img-rounded" alt=""/>
+            <img src="{{ asset('images/article/' . $article->cover) }}" class="article--img img-rounded" alt=""/>
 
             <h2>{{ $article->title }}</h2>
 
