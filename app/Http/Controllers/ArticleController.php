@@ -72,7 +72,7 @@ class ArticleController extends Controller {
         // open file a image resource
         $img = Image::make($destination_path . DIRECTORY_SEPARATOR . $filename);
 
-        // crop the best fitting 5:3 (600x360) ratio and resize to 600x360 pixel
+        // resize to 70x70 pixel with image ratio
         $img->fit(70, 70);
 
         $img->save($destination_path . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR . $filename);
