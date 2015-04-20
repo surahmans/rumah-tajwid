@@ -109,6 +109,7 @@ class ArticleController extends Controller {
 	{
         $article = Article::findOrFail($id);
 
+        // Other user cannot modify another user article (except an admin)
         if (Auth::user()->level != 'admin') {
             if (Auth::user()->id != $article->user_id) {
 
@@ -140,6 +141,14 @@ class ArticleController extends Controller {
 	public function destroy($id)
 	{
 		$article = Article::findOrFail($id);
+
+        // Other user cannot modify another user article (except an admin)
+        if (Auth::user()->level != 'admin') {
+            if (Auth::user()->id != $article->user_id) {
+
+                return Redirect::back();
+            }
+        }
 
         // call delete image method
         $this->deleteImageOnUpdate($article);
