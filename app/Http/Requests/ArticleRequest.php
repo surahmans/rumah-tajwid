@@ -21,11 +21,26 @@ class ArticleRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			'cover'     => 'required|image|max:2048',
-            'title'     => 'required',
-            'body'      => 'required'
-		];
+
+        if ($this->method() != 'PUT') {
+
+            $rules = [
+                'cover'     => 'required|image|max:2048',
+                'title'     => 'required',
+                'body'      => 'required'
+            ];
+
+        } else {
+
+            $rules = [
+                'cover'     => 'image|max:2048',
+                'title'     => 'required',
+                'body'      => 'required'
+            ];
+
+        }
+
+        return $rules;
 	}
 
 }
