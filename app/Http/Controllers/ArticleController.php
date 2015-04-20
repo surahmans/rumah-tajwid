@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\User;
 use Carbon\Carbon;
+use Collective\Html\FormFacade;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -131,7 +132,16 @@ class ArticleController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$article = Article::findOrFail($id);
+
+        // call delete image method
+        $this->deleteImageOnUpdate($article);
+
+        $article->delete();
+
+        Session::flash('successMessage', 'Artikel berhasil dihapus.');
+
+        return Redirect::route('admin.article.index');
 	}
 
 
@@ -190,7 +200,8 @@ class ArticleController extends Controller {
         return Datatables::of($articles)
             ->add_column('actions',
 
-                '<a href={{ action("ArticleController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>'
+                '<a href={{ action("ArticleController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>' .
+                $this->deleteForm('{{$id}}')
             )
             ->make(true);
     }
@@ -264,5 +275,20 @@ class ArticleController extends Controller {
 
         File::delete($old_cover);
         File::delete($old_cover_thumb);
+    }
+
+    /**
+     * Make delete button to handling delete article
+     *
+     * @param $id
+     * @return string
+     */
+    public function deleteForm($id)
+    {
+        $html = FormFacade::open(array('url' => 'admin/article/'.$id, 'method' => 'DELETE', 'class' => 'uk-display-inline uk-margin-left'));
+        $html .= FormFacade::submit("Hapus", array('class' => 'uk-button uk-button-primary uk-button-small uk-border-rounded', 'onClick' => 'return pesan();'));
+        $html .= FormFacade::close();
+
+        return $html;
     }
 }
