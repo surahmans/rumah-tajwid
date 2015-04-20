@@ -19,15 +19,6 @@
 @section('content')
     <h2>Ubah Artikel</h2>
 
-    <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-border-rounded">
-        {!! Form::model($article, ['method' => 'PUT', 'action' => ['ArticleController@update', $article->id], 'class' => 'uk-form uk-form-horizontal']) !!}
-
-        @include('admin.article._form')
-
-        {!! Form::close() !!}
-
-    </div>
-
     @if($errors->any())
         <div class="uk-alert uk-alert-danger">
             <ul>
@@ -37,6 +28,16 @@
             </ul>
         </div>
     @endif
+
+    <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-border-rounded">
+        {!! Form::model($article, ['method' => 'PUT', 'action' => ['ArticleController@update', $article->id], 'class' => 'uk-form uk-form-horizontal', 'files' => 'true']) !!}
+
+        @include('admin.article._form')
+
+        {!! Form::close() !!}
+
+    </div>
+
 @stop
 
 @section('script')

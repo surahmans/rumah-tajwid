@@ -9,10 +9,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use yajra\Datatables\Datatables;
@@ -52,30 +53,11 @@ class ArticleController extends Controller {
 
         Auth::user()->articles()->save($article);
 
-        $uploaded_image = $request->file('cover');
-
-        $extension = $uploaded_image->getClientOriginalExtension();
-        $filename = md5(time()) . '.' . $extension;
-
-        $destination_path = public_path() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'article';
-
-        $uploaded_image->move($destination_path, $filename);
-
-        $article->cover = $filename;
-
         $article->published_at = Carbon::now();
 
-        $article->slug = $this->checkSlug(Str::slug($request->title), 1);
+        $this->saveImage($request, $article);
 
-        $article->save();
-
-        // open file a image resource
-        $img = Image::make($destination_path . DIRECTORY_SEPARATOR . $filename);
-
-        // resize to 70x70 pixel with image ratio
-        $img->fit(70, 70);
-
-        $img->save($destination_path . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR . $filename);
+        Session::flash('successMessage', 'Berhasil menambahkan artikel.');
 
         return Redirect::route('admin.article.index');
 	}
@@ -109,8 +91,9 @@ class ArticleController extends Controller {
 	public function edit($id)
 	{
 		$article = Article::findOrFail($id);
+        $categories = Category::all()->lists('name', 'id');
 
-        return view('admin.article.update', compact('article'));
+        return view('admin.article.update', compact('article', 'categories'));
 	}
 
     /**
@@ -120,13 +103,20 @@ class ArticleController extends Controller {
      * @param Request $requests
      * @return Response
      */
-	public function update($id, Request $requests)
+	public function update($id, ArticleRequest $requests)
 	{
-		$article = Article::findOrFail($id);
+        $article = Article::findOrFail($id);
 
-        $article->update($requests->all());
+        if (Input::hasFile('cover')) {
+            $this->saveImage($requests, $article);
+        }
+
+        $article->update($requests->except('cover'));
+
+        Session::flash('successMessage', 'Artikel berhasil diubah.');
 
         return Redirect::route('admin.article.index');
+
 	}
 
 	/**
@@ -191,7 +181,7 @@ class ArticleController extends Controller {
      */
     public function data()
     {
-        $articles = Article::with('user');
+        $articles = Article::with('user', 'category');
 
         return Datatables::of($articles)
             ->add_column('actions',
@@ -225,5 +215,37 @@ class ArticleController extends Controller {
         } else {
             return $slug;
         }
+    }
+
+    /**
+     * Save an image
+     *
+     * @param ArticleRequest $request
+     * @param $article
+     */
+    public function saveImage(ArticleRequest $request, $article)
+    {
+        $uploaded_image = $request->file('cover');
+
+        $extension = $uploaded_image->getClientOriginalExtension();
+        $filename = md5(time()) . '.' . $extension;
+
+        $destination_path = public_path() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'article';
+
+        $uploaded_image->move($destination_path, $filename);
+
+        $article->cover = $filename;
+
+        $article->slug = $this->checkSlug(Str::slug($request->title), 1);
+
+        $article->save();
+
+        // open file a image resource
+        $img = Image::make($destination_path . DIRECTORY_SEPARATOR . $filename);
+
+        // resize to 70x70 pixel with image ratio
+        $img->fit(70, 70);
+
+        $img->save($destination_path . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR . $filename);
     }
 }

@@ -19,15 +19,6 @@
 @section('content')
     <h2>Tambah Artikel</h2>
 
-    <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-border-rounded">
-        {!! Form::open(['files' => 'true', 'action' => 'ArticleController@store', 'class' => 'uk-form uk-form-horizontal']) !!}
-
-        @include('admin.article._form')
-
-        {!! Form::close() !!}
-
-    </div>
-
     @if($errors->any())
         <div class="uk-alert uk-alert-danger">
             <ul>
@@ -37,6 +28,15 @@
             </ul>
         </div>
     @endif
+
+    <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-border-rounded">
+        {!! Form::open(['files' => 'true', 'action' => 'ArticleController@store', 'class' => 'uk-form uk-form-horizontal']) !!}
+
+        @include('admin.article._form')
+
+        {!! Form::close() !!}
+
+    </div>
 @stop
 
 @section('script')
