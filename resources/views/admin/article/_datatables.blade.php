@@ -7,8 +7,8 @@
              "ajax": "{!! URL::route('admin.article.data') !!}",
              "columns": [
                  {data: 'title', name: 'title', title: 'Title'},
-                 {data: 'user.name', name: 'user', title: 'Author'},
-                 {data: 'category.name', name: 'category', title: 'Category'},
+                 {data: 'user.name', name: 'user_id', title: 'Author', searchable: false, orderable: false},
+                 {data: 'category.name', name: 'category_id', title: 'Category', searchable: false, orderable: false},
                  {data: 'actions', name: 'actions', title: 'Actions', searchable: false, orderable: false, className: "uk-text-center"},
              ]
          });
