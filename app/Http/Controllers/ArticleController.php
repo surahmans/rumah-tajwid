@@ -11,6 +11,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -108,6 +109,9 @@ class ArticleController extends Controller {
         $article = Article::findOrFail($id);
 
         if (Input::hasFile('cover')) {
+
+            $this->deleteImageOnUpdate($article);
+
             $this->saveImage($requests, $article);
         }
 
@@ -247,5 +251,18 @@ class ArticleController extends Controller {
         $img->fit(70, 70);
 
         $img->save($destination_path . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR . $filename);
+    }
+
+    /**
+     * Delete old image when user update it
+     * @param $article
+     */
+    public function deleteImageOnUpdate($article)
+    {
+        $old_cover = public_path() . '/images/article/' . $article->cover;
+        $old_cover_thumb = public_path() . '/images/article/thumb/' . $article->cover;
+
+        File::delete($old_cover);
+        File::delete($old_cover_thumb);
     }
 }
