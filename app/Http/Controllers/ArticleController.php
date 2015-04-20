@@ -61,7 +61,7 @@ class ArticleController extends Controller {
 
         Session::flash('successMessage', 'Berhasil menambahkan artikel.');
 
-        return Redirect::route('admin.article.index');
+        return Redirect::route(Auth::user()->level . '.article.index');
 	}
 
 	/**
@@ -120,7 +120,7 @@ class ArticleController extends Controller {
 
         Session::flash('successMessage', 'Artikel berhasil diubah.');
 
-        return Redirect::route('admin.article.index');
+        return Redirect::route(Auth::user()->level . '.article.index');
 
 	}
 
@@ -141,7 +141,7 @@ class ArticleController extends Controller {
 
         Session::flash('successMessage', 'Artikel berhasil dihapus.');
 
-        return Redirect::route('admin.article.index');
+        return Redirect::route(Auth::user()->level . '.article.index');
 	}
 
 
@@ -285,10 +285,26 @@ class ArticleController extends Controller {
      */
     public function deleteForm($id)
     {
-        $html = FormFacade::open(array('url' => 'admin/article/'.$id, 'method' => 'DELETE', 'class' => 'uk-display-inline uk-margin-left'));
+        $html = FormFacade::open(array('url' => Auth::user()->level . '/article/'.$id, 'method' => 'DELETE', 'class' => 'uk-display-inline uk-margin-left'));
         $html .= FormFacade::submit("Hapus", array('class' => 'uk-button uk-button-primary uk-button-small uk-border-rounded', 'onClick' => 'return pesan();'));
         $html .= FormFacade::close();
 
         return $html;
+    }
+
+    /**
+     * Get data for datatables from an author
+     */
+    public function dataAnAuthor()
+    {
+        $articles = Article::with('category')->where('user_id', Auth::user()->id);
+
+        return Datatables::of($articles)
+            ->add_column('actions',
+
+                '<a href={{ action("ArticleController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>' .
+                $this->deleteForm('{{$id}}')
+            )
+            ->make(true);
     }
 }

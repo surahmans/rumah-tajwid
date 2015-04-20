@@ -18,7 +18,7 @@ class RedirectIfAnAdmin {
         {
             if (! $request->user()->isAdmin())
             {
-                return redirect('/author');
+                return redirect('/author/article');
             }
         } else {
             return redirect('/login');

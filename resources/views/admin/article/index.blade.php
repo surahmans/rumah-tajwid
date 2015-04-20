@@ -40,7 +40,12 @@
 @stop
 
 @section('script')
-    @include('admin.article._datatables')
+    @if(Auth::user()->level == 'admin')
+        @include('admin.article._datatables')
+    @else
+        @include('admin.article._author_datatables')
+    @endif
+
     <script type="text/javascript">
         function pesan() {
             $result = confirm('Apakah Anda yakin ingin menghapusnya?');

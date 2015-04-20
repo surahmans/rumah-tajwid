@@ -21,7 +21,11 @@
                 </li>
             @endunless
             <li class="uk-nav-divider"></li>
-            <li><a href="{{ url('admin/article') }}">Articles</a></li>
+            @if(Auth::user()->level == 'admin')
+                <li><a href="{{ url('admin/article') }}">Articles</a></li>
+            @else
+                <li><a href="{{ url('author/article') }}">Articles</a></li>
+            @endif
         </ul>
     </div>
 </aside>

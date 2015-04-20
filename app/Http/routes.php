@@ -73,6 +73,10 @@ Route::group(['prefix' => 'author', 'middleware' => 'author'], function()
     {
         return view('admin.author');
     });
+
+    Route::get('/article/data', ['as' => 'author.article.data', 'uses' => 'ArticleController@dataAnAuthor']);
+
+    Route::resource('/article', 'ArticleController', ['except' => ['show']]);
 });
 
 Event::listen('illuminate.query', function($query)
