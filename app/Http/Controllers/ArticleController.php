@@ -109,6 +109,13 @@ class ArticleController extends Controller {
 	{
         $article = Article::findOrFail($id);
 
+        if (Auth::user()->level != 'admin') {
+            if (Auth::user()->id != $article->user_id) {
+
+                return Redirect::back();
+            }
+        }
+
         if (Input::hasFile('cover')) {
 
             $this->deleteImageOnUpdate($article);
@@ -200,7 +207,7 @@ class ArticleController extends Controller {
         return Datatables::of($articles)
             ->add_column('actions',
 
-                '<a href={{ action("ArticleController@edit", [$id])}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>' .
+                '<a href={{ route("admin.article.edit", $id)}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>' .
                 $this->deleteForm('{{$id}}')
             )
             ->make(true);

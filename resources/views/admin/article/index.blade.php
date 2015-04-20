@@ -33,7 +33,7 @@
 
     <hr/>
 
-    <a class="uk-button uk-button-primary" href="{{action('ArticleController@create')}}">
+    <a class="uk-button uk-button-primary" href="{{ url(Auth::user()->level . '/article/create') }}">
         <i class="uk-icon-plus"></i>
          Tambah
     </a>

@@ -30,7 +30,7 @@
     @endif
 
     <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-border-rounded">
-        {!! Form::open(['files' => 'true', 'action' => 'ArticleController@store', 'class' => 'uk-form uk-form-horizontal']) !!}
+        {!! Form::open(['files' => 'true', 'method' => 'POST', 'url' => Auth::user()->level . '/article', 'class' => 'uk-form uk-form-horizontal']) !!}
 
         @include('admin.article._form')
 
