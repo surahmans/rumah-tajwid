@@ -21,9 +21,9 @@ Route::get('tag/{id}', 'ArticleController@tag');
 //Auth controller for handle user
 Route::post('authenticate', 'AuthController@authenticate');
 Route::get('logout', 'AuthController@logout');
-Route::get('login', function() {
+Route::get('login', ['middleware' => 'guest', function() {
     return view('admin.login');
-});
+}]);
 
 Route::group(['middleware' => 'auth'], function(){
     Route::controller('filemanager', 'FilemanagerLaravelController');
@@ -80,6 +80,8 @@ Route::group(['prefix' => 'author', 'middleware' => 'author'], function()
 
     Route::resource('/article', 'ArticleController', ['except' => ['show']]);
 });
+
+Route::controller('password', 'Auth\PasswordController');
 
 Event::listen('illuminate.query', function($query)
 {

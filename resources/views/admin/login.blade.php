@@ -46,7 +46,7 @@
                         {!! Form::button('Login', array('class' => 'uk-width-1-1 uk-button uk-button-primary uk-button-large uk-border-rounded', 'type' => 'submit')) !!}
                     </div>
                     <div class="uk-form-row">
-                        <a href="#" class="uk-text-small">Forgot password?</a>
+                        <a href="{{ url('password/email') }}" class="uk-text-small">Forgot password?</a>
                     </div>
                 {!! Form::close() !!}
             </div>
