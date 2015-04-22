@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 // composer require laracasts/testdummy
+use Illuminate\Support\Facades\Hash;
 use Laracasts\TestDummy\Factory as TestDummy;
 
 class UsersTableSeeder extends Seeder {
@@ -16,21 +17,21 @@ class UsersTableSeeder extends Seeder {
                 'id'        => 1,
                 'name'  => 'admin',
                 'email'     => 'admin@gmail.com',
-                'password'  => bcrypt('admin'),
+                'password'  => Hash::make('admin'),
                 'level'     => 'admin'
             ],
             [
                 'id'        => 2,
                 'name'  => 'surahman',
                 'email'     => 'surahman.duang@gmail.com',
-                'password'  => bcrypt('rahasia'),
+                'password'  => Hash::make('salam'),
                 'level'     => 'author'
             ],
             [
                 'id'        => 3,
                 'name'  => 'Yuliana Agustin',
                 'email'     => 'yui@gmail.com',
-                'password'  => bcrypt('salam'),
+                'password'  => Hash::make('salam'),
                 'level'     => 'author'
             ],
         ];
