@@ -9,7 +9,6 @@
     @if (session('status'))
         <div class="uk-alert-success">
             {{ session('status') }} <br/>
-            <p>Please check your inbox early.</p>
         </div>
     @endif
 
