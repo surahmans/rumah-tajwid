@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration {
             $table->string('slug');
             $table->text('body');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->delete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('published_at');
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set NULL');
