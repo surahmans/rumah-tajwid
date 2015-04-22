@@ -1,0 +1,1 @@
+Klik tautan berikut untuk mengatur ulang kata sandi Anda: {{ url('password/reset/'.$token) }}
