@@ -125,7 +125,7 @@ class SubmenuController extends Controller {
     }
 
     /**
-     * Make delete button to handling delete menu
+     * Make delete button to handling delete submenu
      *
      * @param $id
      * @return string

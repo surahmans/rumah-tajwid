@@ -46,7 +46,5 @@
         editor_config.selector = "textarea";
         tinymce.init(editor_config);
     </script>
-    <script type="text/javascript">
-        $('#select2').select2();
-    </script>
+    @include('admin.article._select2')
 @stop

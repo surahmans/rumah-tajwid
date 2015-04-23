@@ -132,7 +132,7 @@ class CategoryController extends Controller {
     }
 
     /**
-     * Make delete button to handling delete menu
+     * Make delete button to handling delete tag
      *
      * @param $id
      * @return string
