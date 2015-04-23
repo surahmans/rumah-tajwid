@@ -72,11 +72,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function setPasswordAttribute($value)
     {
 
-        if (Hash::check($value, Hash::make($value)))
+        if (Hash::needsRehash($value))
         {
-            $this->attributes['password'] = $value;
-        } else {
             $this->attributes['password'] = Hash::make($value);
+        } else {
+            $this->attributes['password'] = $value;
         }
     }
 

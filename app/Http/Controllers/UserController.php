@@ -81,7 +81,11 @@ class UserController extends Controller {
 	{
 		$user = User::findOrFail($id);
 
-        $user->update($request->all());
+        if (\Request::has('password')) {
+            $user->update($request->all());
+        } else {
+            $user->update($request->except('password'));
+        }
 
         Session::flash('successMessage', 'Berhasil mengubah data pengguna dengan nama ' . $user->name);
 
@@ -133,4 +137,5 @@ class UserController extends Controller {
 
         return $html;
     }
+
 }
