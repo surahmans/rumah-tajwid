@@ -21,12 +21,27 @@ class UserRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			'name'      => 'required|min:3',
-            'email'     => 'email|required|unique:users,email,'.$this->segment(3),
-            'password'  => 'required|min:6|confirmed',
-            'password_confirmation' => ''
-		];
+        if ($this->method() == 'PUT' || $this->method() == 'PATCH') {
+
+            //User can blank the password when updating
+            $rules = [
+                'name'      => 'required|min:3',
+                'email'     => 'email|required|unique:users,email,'.$this->segment(3),
+                'password'  => 'min:6|confirmed',
+                'password_confirmation' => ''
+            ];
+        } else {
+
+            //Admin must fill the password when creating user
+            $rules = [
+                'name'      => 'required|min:3',
+                'email'     => 'email|required|unique:users,email,1'.$this->segment(3),
+                'password'  => 'required|min:6|confirmed',
+                'password_confirmation' => ''
+            ];
+        }
+
+        return $rules;
 	}
 
 }
