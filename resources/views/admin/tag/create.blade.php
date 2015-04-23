@@ -13,7 +13,7 @@
 @stop
 
 @section('content')
-    <h2>Tambah Kategori</h2>
+    <h2>Tambah Tag</h2>
 
     <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-border-rounded">
 
