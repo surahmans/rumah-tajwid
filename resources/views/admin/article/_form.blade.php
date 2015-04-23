@@ -32,6 +32,13 @@
 </div>
 
 <div class="uk-form-row">
+    <label class="uk-form-label" for="tag_list">Tag</label>
+    <div class="uk-form-controls">
+        {!! Form::select('tag_list[]', $tags, null, array('class' => 'uk-form-large uk-width-1-1', 'multiple')) !!}
+    </div>
+</div>
+
+<div class="uk-form-row">
     <div class="uk-form-controls">
         {!! Form::button('Simpan', array('class' => 'uk-button uk-button-primary uk-button-large uk-border-rounded uk-width-1-1', 'type' => 'submit')) !!}
     </div>

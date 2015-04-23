@@ -47,4 +47,13 @@ class Article extends Model {
         return $this->belongsToMany('App\Tag');
     }
 
+    /**
+     * Get tag list id associated with the article
+     *
+     * @return array
+     */
+    public function getTagListAttribute()
+    {
+        return $this->tags->lists('id');
+    }
 }

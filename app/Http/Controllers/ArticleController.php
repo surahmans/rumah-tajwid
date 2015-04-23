@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ArticleRequest;
+use App\Tag;
 use App\User;
 use Carbon\Carbon;
 use Collective\Html\FormFacade;
@@ -39,9 +40,11 @@ class ArticleController extends Controller {
 	 */
 	public function create()
 	{
+        $tags = Tag::all()->lists('name', 'id');
+
         $categories = Category::all()->lists('name', 'id');
 
-		return view('admin.article.create', compact('categories'));
+		return view('admin.article.create', compact('categories', 'tags'));
 	}
 
 	/**
@@ -54,6 +57,8 @@ class ArticleController extends Controller {
         $article = New Article($request->except('cover'));
 
         Auth::user()->articles()->save($article);
+
+        $article->tags()->sync($request->input('tag_list'));
 
         $article->published_at = Carbon::now();
 
@@ -92,10 +97,11 @@ class ArticleController extends Controller {
 	 */
 	public function edit($id)
 	{
+        $tags = Tag::all()->lists('name', 'id');
 		$article = Article::findOrFail($id);
         $categories = Category::all()->lists('name', 'id');
 
-        return view('admin.article.update', compact('article', 'categories'));
+        return view('admin.article.update', compact('article', 'categories', 'tags'));
 	}
 
     /**
@@ -105,7 +111,7 @@ class ArticleController extends Controller {
      * @param Request $requests
      * @return Response
      */
-	public function update($id, ArticleRequest $requests)
+	public function update($id, ArticleRequest $request)
 	{
         $article = Article::findOrFail($id);
 
@@ -121,10 +127,12 @@ class ArticleController extends Controller {
 
             $this->deleteImageOnUpdate($article);
 
-            $this->saveImage($requests, $article);
+            $this->saveImage($request, $article);
         }
 
-        $article->update($requests->except('cover'));
+        $article->update($request->except('cover'));
+
+        $article->tags()->sync($request->input('tag_list'));
 
         Session::flash('successMessage', 'Artikel berhasil diubah.');
 
