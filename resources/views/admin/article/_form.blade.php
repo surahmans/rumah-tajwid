@@ -34,7 +34,7 @@
 <div class="uk-form-row">
     <label class="uk-form-label" for="tag_list">Tag</label>
     <div class="uk-form-controls">
-        {!! Form::select('tag_list[]', $tags, null, array('class' => 'uk-form-large uk-width-1-1', 'multiple')) !!}
+        {!! Form::select('tag_list[]', $tags, null, array('id' => 'select2', 'class' => 'uk-form-large uk-width-1-1', 'multiple')) !!}
     </div>
 </div>
 

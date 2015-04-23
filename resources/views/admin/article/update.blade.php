@@ -5,7 +5,7 @@
 @stop
 
 @section('vendor')
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}"/>
 @stop
 
 @section('navbar')
@@ -46,5 +46,8 @@
     <script type="text/javascript">
         editor_config.selector = "textarea";
         tinymce.init(editor_config);
+    </script>
+    <script type="text/javascript">
+        $('#select2').select2();
     </script>
 @stop

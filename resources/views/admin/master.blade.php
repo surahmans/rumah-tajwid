@@ -9,6 +9,7 @@
 		<link href="{{ asset('css/backend.css') }}" rel="stylesheet" media="screen">
 		<link rel="stylesheet" href="{{ asset('package/datatable/css/jquery.dataTables.min.css') }}"/>
 		<script src="{{ asset('js/modernizr.js') }}"></script>
+		@yield('vendor')
 		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/favicon.ico') }}"/>
 	</head>
 	<body>

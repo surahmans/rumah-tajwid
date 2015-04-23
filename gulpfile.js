@@ -41,5 +41,12 @@ elixir(function(mix) {
         [
             paths.bower + "jquery-1.9.1.min/index.js",
             paths.bower + "uikit/js/uikit.min.js",
+            '/resources/js/select2.min.js'
         ], 'public/js/back.js', './');
+
+    mix.styles(
+        [
+            'select2.min.css'
+        ]
+    );
 });
