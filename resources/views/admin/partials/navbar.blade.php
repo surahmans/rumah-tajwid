@@ -10,7 +10,7 @@
                     <div class="uk-dropdown uk-dropdown-navbar">
                         <ul class="uk-nav uk-nav-navbar">
                             <li>
-                                <a href="{{ url('/user/settings/' . Auth::user()->email) }}">
+                                <a href="{{ url(Auth::user()->level.'/settings/' . Auth::user()->id) }}">
                                     <i class="uk-icon-cog"></i>
                                     Settings
                                 </a>

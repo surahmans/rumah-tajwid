@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\Request;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Collective\Html\FormFacade;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Schema;
@@ -138,4 +140,48 @@ class UserController extends Controller {
         return $html;
     }
 
+    /**
+     * Show the form for editing the specified resource
+     *
+     * @param $any
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function setting($any, $id)
+    {
+        $user = User::findOrFail($id);
+
+        if (is_null($user)) {
+            abort(404);
+        }
+
+        return view('admin.users.setting', compact('user'));
+    }
+
+    /**
+     * Update the specified resource to the storage
+     *
+     * @param $any
+     * @param $id
+     * @param UserRequest $request
+     * @return mixed
+     */
+    public function saveSetting($any, $id, UserRequest $request)
+    {
+        $user = User::findOrFail($id);
+
+        if (\Request::has('password')) {
+            $user->update($request->all());
+        } else {
+            $user->update($request->except('password'));
+        }
+
+        Session::flash('successMessage', 'Data profil berhasil diubah.');
+
+        if (Auth::user()->level == 'author') {
+            return Redirect::route('author.article.index');
+        } else {
+            return Redirect::route('admin.user.index');
+        }
+    }
 }

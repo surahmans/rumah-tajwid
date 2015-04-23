@@ -83,6 +83,11 @@ Route::group(['prefix' => 'author', 'middleware' => 'author'], function()
 
 Route::controller('password', 'Auth\PasswordController');
 
+Route::group(['middleware' => 'auth.basic'], function(){
+    Route::get('{any}/settings/{id}', 'UserController@setting');
+    Route::PUT('{any}/settings/{id}', 'UserController@saveSetting');
+});
+
 Event::listen('illuminate.query', function($query)
 {
     \Log::debug($query);
