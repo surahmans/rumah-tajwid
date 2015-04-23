@@ -1,6 +1,8 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserRequest extends Request {
 
@@ -11,7 +13,17 @@ class UserRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+        // Other user cannot modify another user profile (except an admin)
+        if (Auth::user()->level != 'admin') {
+            if (Auth::user()->id != User::findOrFail($this->id)->id) {
+
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
 	}
 
 	/**
