@@ -16,11 +16,11 @@
             <div class="share">
                 <span>Share this:</span>
                 <br/><br/>
-                <a class="fb" onClick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ action('ArticleController@show', [$article->id]) }}','sharer','toolbar=0,status=0,width=580,height=325'); return false;" href="javascript: void(0)"><span class="fa fa-facebook fa-fw"></span> Share</a>
+                <a class="fb" onClick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ action('ArticleController@show', [$article->slug]) }}','sharer','toolbar=0,status=0,width=580,height=325'); return false;" href="javascript: void(0)"><span class="fa fa-facebook fa-fw"></span> Share</a>
 
-                <a class="tweet" onClick="window.open('https://twitter.com/intent/tweet?url={{ action('ArticleController@show', [$article->id]) }}','sharer','toolbar=0,status=0,width=580,height=325'); return false;" href="javascript: void(0)"><span class="fa fa-twitter fa-fw"></span> Tweet</a>
+                <a class="tweet" onClick="window.open('https://twitter.com/intent/tweet?url={{ action('ArticleController@show', [$article->slug]) }}','sharer','toolbar=0,status=0,width=580,height=325'); return false;" href="javascript: void(0)"><span class="fa fa-twitter fa-fw"></span> Tweet</a>
 
-                <a class="google" onClick="window.open('https://plus.google.com/share?url={{ action('ArticleController@show', [$article->id]) }}','sharer','toolbar=0,status=0,width=580,height=325'); return false;" href="javascript: void(0)"><span class="fa fa-google-plus fa-fw"></span> Share</a>
+                <a class="google" onClick="window.open('https://plus.google.com/share?url={{ action('ArticleController@show', [$article->slug]) }}','sharer','toolbar=0,status=0,width=580,height=325'); return false;" href="javascript: void(0)"><span class="fa fa-google-plus fa-fw"></span> Share</a>
             </div>
 
             <div class="tags">
