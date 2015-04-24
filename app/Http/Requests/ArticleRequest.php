@@ -27,7 +27,8 @@ class ArticleRequest extends Request {
             $rules = [
                 'cover'     => 'required|image|max:2048',
                 'title'     => 'required',
-                'body'      => 'required'
+                'body'      => 'required',
+                'tag_list'      => 'required',
             ];
 
         } else {
@@ -35,7 +36,7 @@ class ArticleRequest extends Request {
             $rules = [
                 'cover'     => 'image|max:2048',
                 'title'     => 'required',
-                'body'      => 'required'
+                'tag_list'      => 'required',
             ];
 
         }
