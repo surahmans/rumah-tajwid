@@ -55,6 +55,7 @@ return array(
         'medium' => 'Intervention\Image\Templates\Medium',
         'large' => 'Intervention\Image\Templates\Large',
         'blog'  => 'Rumta\Images\Blog',
+        'related'  => 'Rumta\Images\Related',
     ),
 
     /*
