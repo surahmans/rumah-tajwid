@@ -22,7 +22,7 @@ class TagRequest extends Request {
 	public function rules()
 	{
         return [
-            'name' => 'required|unique:categories'
+            'name' => 'required|unique:tags,name,' . $this->segment(3)
         ];
 	}
 
