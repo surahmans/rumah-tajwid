@@ -5,7 +5,7 @@
                 <div class="panel-body">
                     <img src="{{ asset('images/article/' . $article->cover) }}" class="img-intro img-rounded" alt=""/>
                     <h3 class="h4">{{ $article->title }}</h3>
-                    <p>{{ $article->body }}</p>
+                    <p>{{ $article->excerpt }}</p>
                     <p>
                         <a href="{{ action('ArticleController@show', [$article->id]) }}" class="readmore pull-right">{{ $configs->readmore }}</a>
                     </p>

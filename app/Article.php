@@ -34,7 +34,7 @@ class Article extends Model {
      */
     public function getExcerptAttribute()
     {
-        return Str::limit($this->body, 200, '...');
+        return strip_tags(Str::limit($this->body, 200, '...'));
     }
 
     /**
