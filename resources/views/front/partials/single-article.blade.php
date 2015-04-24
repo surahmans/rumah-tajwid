@@ -42,7 +42,7 @@
                 <div class="row">
                     @foreach($related as $article)
                         <div class="col-xs-4">
-                            <a href="{{ action('ArticleController@show', [$article->id]) }}">
+                            <a href="{{ action('ArticleController@show', [$article->slug]) }}">
                                 <img src="{{ asset('images/article/' . $article->cover) }}" class="img-rounded" alt=""/>
                                 <h4 class="text-center">{{ $article->title }}</h4>
                             </a>

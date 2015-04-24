@@ -75,9 +75,10 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-		$article = Article::with('user', 'tags')->find($id);
+
+		$article = Article::where('slug', $slug)->with('user', 'tags')->first();
 
         if(is_null($article)) {
             abort(404);

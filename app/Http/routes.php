@@ -14,7 +14,7 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('articles/{id}', 'ArticleController@category');
 
-Route::get('article/{id}', 'ArticleController@show');
+Route::get('article/{slug}', 'ArticleController@show');
 
 Route::get('tag/{id}', 'ArticleController@tag');
 

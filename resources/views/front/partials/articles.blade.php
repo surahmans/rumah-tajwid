@@ -7,7 +7,7 @@
                     <h3 class="h4">{{ $article->title }}</h3>
                     <p>{{ $article->excerpt }}</p>
                     <p>
-                        <a href="{{ action('ArticleController@show', [$article->id]) }}" class="readmore pull-right">{{ $configs->readmore }}</a>
+                        <a href="{{ action('ArticleController@show', [$article->slug]) }}" class="readmore pull-right">{{ $configs->readmore }}</a>
                     </p>
                 </div>
             </div>

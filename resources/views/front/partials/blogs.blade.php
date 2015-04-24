@@ -24,12 +24,12 @@
                                                 <div class="blog--latest">
                                                     <img src="{{ 'images/article/' . $article->cover }}" class="blog--latest--img img-rounded" alt=""/>
                                                     <h3 class="blog--latest--img__overlay img-rounded">
-                                                        <a href="{{ action('ArticleController@show', [$article->id]) }}">{{ $article->title }}</a>
+                                                        <a href="{{ action('ArticleController@show', [$article->slug]) }}">{{ $article->title }}</a>
                                                     </h3>
                                                 </div>
                                                 <div class="blog--links">
                             @else
-                                                    <a href="{{ action('ArticleController@show', [$article->id]) }}">{{ $article->title }}</a>
+                                                    <a href="{{ action('ArticleController@show', [$article->slug]) }}">{{ $article->title }}</a>
                             @endif
 
                             <?php $latest--; ?>

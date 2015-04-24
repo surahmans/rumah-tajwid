@@ -5,7 +5,7 @@
             <div class="slide {{ $active }}">
                 <img src="{{ asset('images/article/'.$slide->cover) }}" class="img-rounded img-responsive" alt="Slide image"/>
                 <div class="overlay">
-                    <h3><a href="{{ action('ArticleController@show', [$slide->id]) }}">{{ $slide->title }}</a></h3>
+                    <h3><a href="{{ action('ArticleController@show', [$slide->slug]) }}">{{ $slide->title }}</a></h3>
                     <p>{{ $slide->excerpt }}</p>
                 </div>
             </div>
