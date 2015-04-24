@@ -16,7 +16,7 @@ Route::get('articles/{slug}', 'ArticleController@category');
 
 Route::get('article/{slug}', 'ArticleController@show');
 
-Route::get('tag/{id}', 'ArticleController@tag');
+Route::get('tag/{slug}', 'ArticleController@tag');
 
 //Auth controller for handle user
 Route::post('authenticate', 'AuthController@authenticate');

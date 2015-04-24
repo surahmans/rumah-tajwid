@@ -77,7 +77,6 @@ class ArticleController extends Controller {
 	 */
 	public function show($slug)
 	{
-
 		$article = Article::where('slug', $slug)->with('user', 'tags')->first();
 
         if(is_null($article)) {
@@ -85,7 +84,6 @@ class ArticleController extends Controller {
         }
 
         $related = $this->getRelatedArticles($article);
-
 
         return view('front.article', compact('article', 'related'));
 	}
@@ -205,12 +203,12 @@ class ArticleController extends Controller {
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function tag($id)
+    public function tag($slug)
     {
         $amount = Configuration::first();
 
-        $articles = Article::whereHas('tags', function($query) use ($id) {
-            $query->where('id', $id);
+        $articles = Article::whereHas('tags', function($query) use ($slug) {
+            $query->where('slug', $slug);
         })->orderBy('id', 'DESC')->paginate($amount->perpage);
 
         return view('front.tag', compact('articles'));

@@ -27,7 +27,7 @@
                 <h4 class="fa fa-tags"> Tags:</h4>
 
                 @foreach($article->tags as $tag)
-                    <a href="{{ action('ArticleController@tag', [$tag->id]) }}">{{ $tag->name }}</a>
+                    <a href="{{ action('ArticleController@tag', [$tag->slug]) }}">{{ $tag->name }}</a>
                 @endforeach
             </div>
 

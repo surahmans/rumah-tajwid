@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Tag extends Model {
 
@@ -9,7 +10,7 @@ class Tag extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'slug'];
 
     /**
      * Get the articles associated with the given tag
@@ -20,5 +21,10 @@ class Tag extends Model {
     {
         return $this->belongsToMany('App\Article');
 	}
+
+    public function getSlugAttribute()
+    {
+        return Str::slug($this->name);
+    }
 
 }

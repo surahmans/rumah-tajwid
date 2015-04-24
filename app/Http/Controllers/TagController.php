@@ -9,6 +9,7 @@ use Collective\Html\FormFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use yajra\Datatables\Datatables;
 
 class TagController extends Controller {
@@ -40,8 +41,9 @@ class TagController extends Controller {
      */
     public function store(TagRequest $request)
     {
-
         $tag = Tag::create($request->all());
+
+        $this->tagSlug($tag);
 
         Session::flash('successMessage', 'Tag ' . $tag->name . ' berhasil ditambahkan.');
 
@@ -72,6 +74,8 @@ class TagController extends Controller {
         $tag = Tag::findOrFail($id);
 
         $tag->update($request->all());
+
+        $this->tagSlug($tag);
 
         Session::flash('successMessage', 'Tag tersebut berhasil diubah.');
 
@@ -124,6 +128,17 @@ class TagController extends Controller {
         $html .= FormFacade::close();
 
         return $html;
+    }
+
+    /**
+     * Get tag slug
+     *
+     * @return slug
+     */
+    public function tagSlug($tag)
+    {
+        $tag->slug = Str::slug($tag->name);
+        $tag->save();
     }
 
 }
