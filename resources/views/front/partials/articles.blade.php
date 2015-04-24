@@ -3,7 +3,7 @@
         <div class="col-xs-12 col-sm-6">
             <div class="panel panel-primary">
                 <div class="panel-body">
-                    <img src="{{ asset('images/article/' . $article->cover) }}" class="img-intro img-rounded" alt=""/>
+                    <img src="{{ asset('images/blog/' . $article->cover) }}" class="img-intro img-rounded" alt=""/>
                     <h3 class="h4">{{ $article->title }}</h3>
                     <p>{{ $article->excerpt }}</p>
                     <p>
