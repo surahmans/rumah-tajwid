@@ -176,11 +176,12 @@ class ArticleController extends Controller {
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function category($id)
+    public function category($slug)
     {
         $amount = Configuration::first();
+        $category = Category::where('slug', $slug)->first();
 
-        $articles = Article::where('category_id', $id)->paginate($amount->perpage);
+        $articles = Article::where('category_id', $category->id)->paginate($amount->perpage);
 
         return view('front.category', compact('articles'));
     }

@@ -36,7 +36,7 @@
                             <?php $limit--; ?>
 
                             @if($limit <= 0 || count($blog->articles) == 0)
-                                                    <a href="{{ action('ArticleController@category', [$blog->id]) }}" class="more">{{ $configs->viewall }}</a>
+                                                    <a href="{{ action('ArticleController@category', [$blog->slug]) }}" class="more">{{ $configs->viewall }}</a>
                                                 </div> <!-- Blog links -->
                                             </div> <!-- Blog -->
                                         </div> <!-- Blog panel body -->

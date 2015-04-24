@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-Route::get('articles/{id}', 'ArticleController@category');
+Route::get('articles/{slug}', 'ArticleController@category');
 
 Route::get('article/{slug}', 'ArticleController@show');
 
