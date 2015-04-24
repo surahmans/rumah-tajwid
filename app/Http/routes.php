@@ -14,7 +14,7 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('articles/{slug}', 'ArticleController@category');
 
-Route::get('article/{slug}', 'ArticleController@show');
+Route::get('article/{slug}', ['as' => 'article.show', 'uses' => 'ArticleController@show']);
 
 Route::get('tag/{slug}', 'ArticleController@tag');
 
