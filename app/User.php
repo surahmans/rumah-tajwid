@@ -80,4 +80,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
+    /**
+     * Get page associated with the owner
+     */
+    public function pages()
+    {
+        return $this->hasMany('App\Page');
+    }
 }

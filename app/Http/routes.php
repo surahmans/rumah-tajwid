@@ -16,6 +16,8 @@ Route::get('articles/{slug}', 'ArticleController@category');
 
 Route::get('article/{slug}', ['as' => 'article.show', 'uses' => 'ArticleController@show']);
 
+Route::get('page/{slug}', ['as' => 'page.show', 'uses' => 'PageController@show']);
+
 Route::get('tag/{slug}', 'ArticleController@tag');
 
 //Auth controller for handle user
@@ -72,6 +74,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 
     Route::resource('/tag', 'TagController', ['except' => 'show']);
 
+    Route::get('/page/data', ['as' => 'admin.page.data', 'uses' => 'PageController@data']);
+
+    Route::resource('/page', 'PageController', ['except' => 'show']);
 });
 
 Route::group(['prefix' => 'author', 'middleware' => 'author'], function()
