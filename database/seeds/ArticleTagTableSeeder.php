@@ -2,47 +2,26 @@
 
 use Illuminate\Database\Seeder;
 
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 
 class ArticleTagTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('article_tag')->delete();
+        $faker = Faker::create();
 
-        $pivot = [
-            [
-                'article_id' => 1,
-                'tag_id'     => 1,
-            ],
-            [
-                'article_id' => 1,
-                'tag_id'     => 2,
-            ],
-            [
-                'article_id' => 1,
-                'tag_id'     => 3,
-            ],
-            [
-                'article_id' => 2,
-                'tag_id'     => 3,
-            ],
-            [
-                'article_id' => 3,
-                'tag_id'     => 3,
-            ],
-            [
-                'article_id' => 4,
-                'tag_id'     => 3,
-            ],
-            [
-                'article_id' => 4,
-                'tag_id'     => 4,
-            ],
-        ];
+        $articles = \App\Article::all()->lists('id');
+        $tags = \App\Tag::all()->lists('id');
 
-        DB::table('article_tag')->insert($pivot);
+        foreach(range(1, 30) as $index)
+        {
+            DB::table('article_tag')->insert([
+                'article_id' => $faker->randomElement($articles),
+                'tag_id'     => $faker->randomElement($tags),
+            ]);
+        }
+
     }
 
 }

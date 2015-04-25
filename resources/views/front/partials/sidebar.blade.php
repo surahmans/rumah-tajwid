@@ -25,7 +25,7 @@
                         <div class="tab-pane fade in active" id="popular">
                             @foreach($popular as $article)
                                 <div class="list">
-                                    <img src="{{ asset('images/article/thumb/' . $article->cover) }}" alt=""/>
+                                    <img src="{{ asset('images/thumb/' . $article->cover) }}" alt=""/>
                                     <a href="{{ action('ArticleController@show', [$article->slug]) }}">{{ $article->title }}</a>
                                     <p>{{ Date::parse($article->published_at)->format('l, j F Y') }}</p>
                                 </div>
@@ -36,7 +36,7 @@
                         <div class="tab-pane fade" id="recent">
                             @foreach($recent as $article)
                                 <div class="list">
-                                    <img src="{{ asset('images/article/thumb/' . $article->cover) }}" alt=""/>
+                                    <img src="{{ asset('images/thumb/' . $article->cover) }}" alt=""/>
                                     <a href="{{ action('ArticleController@show', [$article->slug]) }}">{{ $article->title }}</a>
                                     <p>{{ Date::parse($article->published_at)->diffForhumans() }}</p>
                                 </div>

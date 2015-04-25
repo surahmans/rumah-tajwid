@@ -2,87 +2,39 @@
 
 use Illuminate\Database\Seeder;
 
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
+use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 
 class ArticlesTableSeeder extends Seeder {
 
     public function run()
     {
-        // TestDummy::times(20)->create('App\Post');
+        $faker = Faker::create();
 
-        DB::table('articles')->delete();
+        foreach(range(1, 1) as $index)
+        {
+            $faker->image($dir = public_path() . '/images/article/tmp', $width=600, $height=400);
+        }
 
-        $articles = [
-            [
-                'id'      => 1,
-                'cover'   => '1.jpg',
-                'title'   => 'Biasakan lah Membaca Al-Qur\'an',
-                'slug'    => 'biasakan-lah-membaca-al-qur-an',
-                'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
-                'user_id' => 3,
-                'published_at' => date('Y-m-d'),
-                'category_id'  => 1,
-                'slide'   => 1
-            ],
-            [
-                'id'      => 2,
-                'cover'   => '2.jpg',
-                'title'   => 'Pembagian Qur\'an Menjadi 30 Juz',
-                'slug'    => 'pembagian-qur-an-menjadi-30-juz',
-                'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
-                'user_id' => 2,
-                'published_at' => date('Y-m-d'),
-                'category_id'  => 1,
-                'slide'   => 1
-            ],
-            [
-                'id'      => 3,
-                'cover'   => '3.jpg',
-                'title'   => 'Hidup Mulia dengan Al-Qur\'an',
-                'slug'    => 'hidup-mulia-dengan-al-qur-an',
-                'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
-                'user_id' => 3,
-                'published_at' => date('Y-m-d'),
-                'category_id'  => 1,
-                'slide'   => 1
-            ],
-            [
-                'id'      => 4,
-                'cover'   => '1.jpg',
-                'title'   => 'Agar Bacaan Kita Seperti Rasulullah',
-                'slug'    => 'agar-bacaan-kita-seperti-rasulullah',
-                'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
-                'user_id' => 2,
-                'published_at' => date('Y-m-d'),
-                'category_id'  => 1,
-                'slide'   => 1
-            ],
-            [
-                'id'      => 5,
-                'cover'   => '2.jpg',
-                'title'   => 'Hiduplah Seperti Rasulullah',
-                'slug'    => 'hiduplah-seperti-rasulullah',
-                'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
-                'user_id' => 2,
-                'published_at' => date('Y-m-d'),
-                'category_id'  => 1,
+        $userIds = \App\User::all()->lists('id');
+        $catIds = \App\Category::all()->lists('id');
+
+        foreach(range(1, 30) as $index)
+        {
+            $title = $faker->sentence(5);
+
+
+            \App\Article::create([
+                'cover'   => $faker->file($sourceDir = public_path() . '/images/article/tmp', $targetDir = public_path() . '/images/article', false),
+                'title'   => $title,
+                'slug'    => Str::slug($title),
+                'body'    => '<p>'.$faker->text(400).'</p>' . '<p>'.$faker->text(800).'</p>' . '<p>'.$faker->text(1000).'</p>',
+                'user_id' => $faker->randomElement($userIds),
+                'published_at' => $faker->dateTimeThisMonth(),
+                'category_id'  => $faker->randomElement($catIds),
                 'slide'   => 0
-            ],
-            [
-                'id'      => 6,
-                'cover'   => '2.jpg',
-                'title'   => 'Pembukaan Kelas Baru',
-                'slug'    => 'pembukaan-kelas-baru',
-                'body'    => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis consequatur cum cumque ea eius expedita, illum nobis non perferendis placeat sed sunt suscipit, temporibus vel voluptas. Blanditiis, ratione.',
-                'user_id' => 2,
-                'published_at' => date('Y-m-d'),
-                'category_id'  => 3,
-                'slide'   => 0
-            ],
-        ];
-
-        DB::table('articles')->insert($articles);
+            ]);
+        }
 
     }
 

@@ -14,7 +14,7 @@ class ConfigsTableSeeder extends Seeder {
         $config = [
             [
                 'category'  => 5,
-                'perpage'   => 3,
+                'perpage'   => 6,
                 'viewall'   => 'Lihat semua...',
                 'maps'      => '-6.39750,  	106.81216',
                 'facebook'  => 'https://www.facebook.com/pages/Rumah-Tajwid-Indonesia/119628428065731',

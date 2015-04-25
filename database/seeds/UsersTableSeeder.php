@@ -4,39 +4,30 @@ use Illuminate\Database\Seeder;
 
 // composer require laracasts/testdummy
 use Illuminate\Support\Facades\Hash;
-use Laracasts\TestDummy\Factory as TestDummy;
+use Faker\Factory as Faker;
 
 class UsersTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('users')->delete();
+        $faker = Faker::create();
 
-        $users = [
-            [
-                'id'        => 1,
-                'name'  => 'admin',
-                'email'     => 'admin@gmail.com',
-                'password'  => Hash::make('admin'),
-                'level'     => 'admin'
-            ],
-            [
-                'id'        => 2,
-                'name'  => 'surahman',
-                'email'     => 'surahman.duang@gmail.com',
-                'password'  => Hash::make('salam'),
-                'level'     => 'author'
-            ],
-            [
-                'id'        => 3,
-                'name'  => 'Yuliana Agustin',
-                'email'     => 'yui@gmail.com',
-                'password'  => Hash::make('salam'),
-                'level'     => 'author'
-            ],
-        ];
+        foreach(range(1, 5) as $index)
+        {
+            \App\User::create([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => Hash::make($faker->word),
+                'level' => 'author'
+            ]);
+        }
 
-        DB::table('users')->insert($users);
+        \App\User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin'),
+            'level' => 'admin'
+        ]);
     }
 
 }

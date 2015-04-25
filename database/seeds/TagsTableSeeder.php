@@ -2,35 +2,26 @@
 
 use Illuminate\Database\Seeder;
 
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
+use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 
 class TagsTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('tags')->delete();
+        $faker = Faker::create();
 
-        $tags = [
-            [
-                'id'    => 1,
-                'name'  => 'Qur\'an'
-            ],
-            [
-                'id'    => 2,
-                'name'  => 'Tajwid'
-            ],
-            [
-                'id'    => 3,
-                'name'  => 'Motivasi'
-            ],
-            [
-                'id'    => 4,
-                'name'  => 'Beasiswa'
-            ]
-        ];
+        foreach(range(1, 8) as $index)
+        {
+            $tag = $faker->word;
 
-        DB::table('tags')->insert($tags);
+            \App\Tag::create([
+
+                'name' => $tag,
+                'slug' => Str::slug($tag)
+            ]);
+
+        }
     }
 
 }
