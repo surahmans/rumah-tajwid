@@ -135,9 +135,9 @@ class PageController extends Controller {
         return Datatables::of($articles)
             ->add_column('actions',
 
-                '<a href={{ route("admin.page.edit", $id)}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o">Ubah</a>' .
-                $this->deleteForm('{{$id}}') .
-                '<a href={{ route("page.show", $slug)}} class="uk-icon-hover uk-icon-small uk-icon-eye" target="_blank" style="margin-left:15px;">View</a>'
+                '<a href={{ route("admin.page.edit", $id)}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o"></a>' .
+                '<a href={{ route("page.show", $slug)}} class="uk-icon-hover uk-icon-small uk-icon-eye" target="_blank" style="margin-left:15px;"></a>' .
+                $this->deleteForm('{{$id}}')
             )
             ->make(true);
     }
