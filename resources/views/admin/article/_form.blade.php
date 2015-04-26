@@ -4,7 +4,7 @@
         {!! Form::file('cover') !!}
 
         @if(isset($article) && $article->cover)
-            {!! Html::image(asset('images/article/thumb/' . $article->cover)) !!}
+            {!! Html::image(asset('images/thumb/' . $article->cover)) !!}
             <p><i class="uk-text-muted">Biarkan field cover jika tidak ingin mengubahnya.</i></p>
         @endif
     </div>
