@@ -6613,6 +6613,12 @@ a, a:hover {
   padding: 0 5px;
   margin: 0 auto; }
 
+.nav--custom {
+  font-size: 1.4em; }
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: black; }
+
 .newsfeed {
   box-shadow: inset 5px 5px 30px 1px #cae3ff;
   margin-bottom: 10px;
@@ -6623,7 +6629,8 @@ a, a:hover {
   margin: 0 auto;
   white-space: nowrap;
   -webkit-animation: marquee 50s linear infinite;
-  animation: marquee 50s linear infinite; }
+  animation: marquee 50s linear infinite;
+  font-size: 0.8em; }
 
 .news:hover {
   -webkit-animation-play-state: paused;

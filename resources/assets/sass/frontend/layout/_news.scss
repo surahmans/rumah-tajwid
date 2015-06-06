@@ -9,6 +9,7 @@
   margin: 0 auto;
   white-space: nowrap;
   @include animation(marquee 50s linear infinite);
+  font-size: 0.8em;
 }
 
 .news:hover {
