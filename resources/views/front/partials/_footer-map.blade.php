@@ -3,10 +3,6 @@
     <div id="map" style="width: 100%; height: 250px;">
 
     </div>
-    <div>
-        <br/>
-        {!! $configs->address  !!}
-    </div>
 </div>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>

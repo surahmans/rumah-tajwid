@@ -6572,7 +6572,8 @@ a, a:hover {
 
 .trojanhorse {
   font-family: trojanhorse;
-  font-size: 3em; }
+  font-size: 3.6vw;
+  margin-bottom: 0px; }
 
 @font-face {
   font-family: corbel-backup;
@@ -6607,7 +6608,10 @@ a, a:hover {
     bottom: -10px; }
 
 .logo {
-  vertical-align: middle; }
+  margin: 10px 0; }
+
+.banner {
+  margin-top: 15px; }
 
 .nav--space {
   padding: 0 5px;
