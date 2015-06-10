@@ -21,11 +21,17 @@ elixir(function(mix) {
             [
                 "frontend/style.scss",
                 "backend/backend.scss"
-            ], 'public/css/',
+            ], 'public/css/style.css',
             {includePaths: [paths.bootstrap + 'stylesheets/',
                 paths.bower + 'bourbon/app/assets/stylesheets/',
-                paths.bower + 'fontawesome/scss/',
-                paths.bower + 'uikit/scss/']}
+                paths.bower + 'fontawesome/scss/']}
+        )
+        .sass(
+            [
+                "backend/backend.scss"
+            ], 'public/css/backend.css',
+            {includePaths: [paths.bower + 'uikit/scss/',
+                paths.bower + 'fontawesome/scss/']}
         )
         .copy(
             paths.bootstrap + 'fonts/bootstrap/', 'public/fonts/bootstrap/',
