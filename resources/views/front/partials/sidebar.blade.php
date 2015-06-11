@@ -13,9 +13,7 @@
                         <li class="active"><a href="#popular" data-toggle="tab">Populer</a></li>
                         <li><a href="#recent" data-toggle="tab">Terkini</a></li>
                         <li>
-                            <a href="#comment" data-toggle="tab">
-                                <span class="fa fa-comment"> Komentar</span>
-                            </a>
+                            <a href="#comment" data-toggle="tab">Komentar</a>
                         </li>
                     </ul>
                 </div>

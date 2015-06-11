@@ -77,7 +77,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
         view()->composer('front.partials.blogs', function ($view) {
             $blogs = Category::with(array('articles' => function($query) {
                 $query->orderBy('id', 'DESC');
-            }))->get();
+            }))->orderBy('order', 'ASC')->get();
             $view->with('blogs', $blogs);
         });
     }
