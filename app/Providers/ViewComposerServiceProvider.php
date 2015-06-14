@@ -42,7 +42,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
     public function composeNavigation()
     {
         view()->composer('front.partials.nav', function ($view) {
-            $menus = Menu::with('submenu')->get();
+            $menus = Menu::with('submenu')->orderBy('order', 'ASC')->get();
             $view->with('menus', $menus);
         });
     }

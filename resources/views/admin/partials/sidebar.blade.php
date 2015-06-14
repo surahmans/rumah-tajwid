@@ -18,6 +18,13 @@
                 <li class="uk-nav-header">Config</li>
                 <li><a href="{{ url('admin/basic') }}">Basic</a></li>
                 <li><a href="{{ url('admin/widget') }}">Widgets</a>
+                <li class="uk-parent">
+                    <a href="#">Order</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="{{ url('admin/config/menu') }}">Menu</a></li>
+                        <li><a href="{{ url('admin/config/categories') }}">Categories</a></li>
+                    </ul>
+                </li>
                 </li>
             @endunless
             <li class="uk-nav-divider"></li>

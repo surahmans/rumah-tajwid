@@ -77,6 +77,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('/page/data', ['as' => 'admin.page.data', 'uses' => 'PageController@data']);
 
     Route::resource('/page', 'PageController', ['except' => 'show']);
+
+    Route::POST('config/menu/', ['as' => 'admin.config.menu.order', 'uses' => 'MenuController@updateOrder']);
+
+    Route::get('config/menu/', ['as' => 'admin.config.menu', 'uses' => 'MenuController@indexOrder']);
+
+    Route::POST('config/categories/', ['as' => 'admin.config.categories.order', 'uses' => 'CategoryController@updateOrder']);
+
+    Route::get('config/categories/', ['as' => 'admin.config.categories', 'uses' => 'CategoryController@indexOrder']);
 });
 
 Route::group(['prefix' => 'author', 'middleware' => 'author'], function()

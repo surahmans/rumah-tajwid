@@ -137,4 +137,33 @@ class MenuController extends Controller {
         return $html;
     }
 
+    /**
+     * Display menu
+     * @return Respone
+     */
+    public function indexOrder()
+    {
+    	$menu = Menu::whereNull('parent_id')->orderBy('order', 'ASC')->get();
+
+    	return view('admin.config.menu.index', compact('menu'));
+    }
+
+    /**
+     * Update menu order with ajax
+     * @param  Request
+     * @return Response
+     */
+    public function updateOrder(Request $request)	
+    {
+    	if($request->ajax()){
+    		$menu = Menu::whereNull('parent_id')->orderBy('order', 'ASC')->get();
+    		$itemID = $request->itemID;
+    		$itemIndex = $request->itemIndex;
+
+    		foreach ($menu as $item) {
+    			return Menu::where('id', $itemID)->update(array('order' => $itemIndex));
+    		}
+	    }    	
+    }
+
 }

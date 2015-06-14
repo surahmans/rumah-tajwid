@@ -146,4 +146,33 @@ class CategoryController extends Controller {
         return $html;
     }
 
+    /**
+     * Display Category
+     * @return Respone
+     */
+    public function indexOrder()
+    {
+    	$categories = Category::orderBy('order', 'ASC')->get();
+
+    	return view('admin.config.categories.index', compact('categories'));
+    }
+
+    /**
+     * Update Category order with ajax
+     * @param  Request
+     * @return Response
+     */
+    public function updateOrder(Request $request)	
+    {
+    	if($request->ajax()){
+    		$categories = Category::orderBy('order', 'ASC')->get();
+    		$itemID = $request->itemID;
+    		$itemIndex = $request->itemIndex;
+
+    		foreach ($categories as $item) {
+    			return Category::where('id', $itemID)->update(array('order' => $itemIndex));
+    		}
+	    }    	
+    }
+
 }
