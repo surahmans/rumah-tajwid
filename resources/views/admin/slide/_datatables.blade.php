@@ -2,8 +2,7 @@
     $(document).ready(function() {
          oTable = $('#slide').DataTable({
              "processing": true,
-             "serverSide": false,
-             "order": [1, 'asc'],
+             "serverSide": true,
              "ajax": "{!! URL::route('admin.slide.data') !!}",
              "columns": [
                  {data: 'title', name: 'title', title: 'Title'},
