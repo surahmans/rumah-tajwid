@@ -15,13 +15,14 @@ var paths = {
     'bootstrap': './bower_components/bootstrap-sass-official/assets/'
 };
 
+elixir.config.sourcemaps = false;
+
 elixir(function(mix) {
     mix
         .sass(
             [
                 "frontend/style.scss",
-                "backend/backend.scss"
-            ], 'public/css/style.css',
+            ], 'public/css/',
             {includePaths: [paths.bootstrap + 'stylesheets/',
                 paths.bower + 'bourbon/app/assets/stylesheets/',
                 paths.bower + 'fontawesome/scss/']}
@@ -29,7 +30,7 @@ elixir(function(mix) {
         .sass(
             [
                 "backend/backend.scss"
-            ], 'public/css/backend.css',
+            ], 'public/css/',
             {includePaths: [paths.bower + 'uikit/scss/',
                 paths.bower + 'fontawesome/scss/']}
         )

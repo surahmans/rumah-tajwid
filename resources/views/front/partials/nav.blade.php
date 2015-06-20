@@ -13,7 +13,7 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav navbar-right nav--custom">
+            <ul class="nav navbar-nav nav--custom">
                 @foreach($menus as $menu)
                     @if(count($menu->submenu) > 0)
                         <li class="dropdown">

@@ -2336,4 +2336,3 @@ var slider = function() {
     currentSlide.fadeOut(600).removeClass('slide--active').css('display', 'none');
     nextSlide.fadeIn(600).addClass('slide--active');
 };
-//# sourceMappingURL=app.js.map

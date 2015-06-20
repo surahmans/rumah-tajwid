@@ -4,7 +4,7 @@
  			<img src="{{URL::asset('asset/img/logo.jpg')}}" class="logo img-responsive" alt="Logo Rumah Tajwid"/>
  		</div>	
  		<div class="col-xs-9">
- 			<p class="trojanhorse">Rumah Tajwid.com</p>
+ 			<p class="trojanhorse text-center">Rumah Tajwid.com</p>
  			<div>{!! $configs->address  !!}</div>
  		</div>
 	</div>
