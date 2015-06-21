@@ -83,6 +83,8 @@ class ArticleController extends Controller {
             abort(404);
         }
 
+        $article->increment('views');
+
         $related = $this->getRelatedArticles($article);
 
         return view('front.article', compact('article', 'related'));
