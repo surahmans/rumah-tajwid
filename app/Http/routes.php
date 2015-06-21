@@ -85,6 +85,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::POST('config/categories/', ['as' => 'admin.config.categories.order', 'uses' => 'CategoryController@updateOrder']);
 
     Route::get('config/categories/', ['as' => 'admin.config.categories', 'uses' => 'CategoryController@indexOrder']);
+
+    Route::PUT('/article/published/{id}', ['as' => 'admin.article.published', 'uses' => 'ArticleController@published']);
 });
 
 Route::group(['prefix' => 'author', 'middleware' => 'author'], function()

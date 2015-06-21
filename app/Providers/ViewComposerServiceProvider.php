@@ -53,7 +53,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
     public function composePopular()
     {
         view()->composer(['front.partials.sidebar', 'front.partials.news'], function ($view) {
-            $popular = Article::all()->sortByDesc('views')->take(5);
+            $popular = Article::published()->orderBy('views', 'DESC')->get()->take(5);
             $view->with('popular', $popular);
         });
     }
@@ -64,7 +64,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
     public function composeRecent()
     {
         view()->composer('front.partials.sidebar', function ($view) {
-            $recent = Article::all()->sortByDesc('id')->take(5);
+            $recent = Article::published()->orderBy('published_at', 'DESC')->get()->take(5);
             $view->with('recent', $recent);
         });
     }
@@ -76,7 +76,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
     {
         view()->composer('front.partials.blogs', function ($view) {
             $blogs = Category::with(array('articles' => function($query) {
-                $query->orderBy('id', 'DESC');
+                $query->orderBy('id', 'DESC')->published();
             }))->orderBy('order', 'ASC')->get();
             $view->with('blogs', $blogs);
         });

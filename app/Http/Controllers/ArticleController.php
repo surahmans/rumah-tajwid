@@ -60,7 +60,7 @@ class ArticleController extends Controller {
 
         $article->tags()->sync($request->input('tag_list'));
 
-        $article->published_at = Carbon::now();
+        //$article->published_at = Carbon::now();
 
         $this->saveImage($request, $article);
 
@@ -179,7 +179,7 @@ class ArticleController extends Controller {
         $amount = Configuration::first();
         $category = Category::where('slug', $slug)->first();
 
-        $articles = Article::where('category_id', $category->id)->paginate($amount->perpage);
+        $articles = Article::where('category_id', $category->id)->published()->paginate($amount->perpage);
 
         return view('front.category', compact('articles'));
     }
@@ -193,7 +193,7 @@ class ArticleController extends Controller {
     {
         $related = Article::whereHas('tags', function ($query) use ($article) {
             $query->whereIn('id', $article->tags()->lists('id'));
-        })->whereNotIn('id', [$article->id])->orderBy('id', 'DESC')->take(3)->get();
+        })->whereNotIn('id', [$article->id])->published()->orderBy('id', 'DESC')->take(3)->get();
         return $related;
     }
 
@@ -209,7 +209,7 @@ class ArticleController extends Controller {
 
         $articles = Article::whereHas('tags', function($query) use ($slug) {
             $query->where('slug', $slug);
-        })->orderBy('id', 'DESC')->paginate($amount->perpage);
+        })->published()->orderBy('id', 'DESC')->paginate($amount->perpage);
 
         return view('front.tag', compact('articles'));
     }
@@ -227,6 +227,12 @@ class ArticleController extends Controller {
                 '<a href={{ route("admin.article.edit", $id)}} class="uk-icon-hover uk-icon-small uk-icon-pencil-square-o"></a>' .
                 '<a href={{ route("article.show", $slug)}} class="uk-icon-hover uk-icon-small uk-icon-eye" target="_blank" style="margin-left:15px;"></a>' .
                 $this->deleteForm('{{$id}}')
+            )
+            ->editColumn('title',
+                '{{$title}}' .
+                '@if($published_at == "0000-00-00 00:00:00")
+                ' . $this->publishButton('{{$id}}') . '
+                @endif' 
             )
             ->make(true);
     }
@@ -331,6 +337,46 @@ class ArticleController extends Controller {
                 '<a href={{ route("article.show", $slug)}} class="uk-icon-hover uk-icon-small uk-icon-eye" target="_blank" style="margin-left:15px;"></a>' .
                 $this->deleteForm('{{$id}}')
             )
+            ->editColumn('title',
+                '@if($published_at == "0000-00-00 00:00:00")
+                    <i class="uk-text-danger uk-icon-small uk-icon uk-icon-calendar-o"></i>
+                @endif' . '{{$title}}'
+                )
             ->make(true);
+    }
+
+    /**
+     * Published an article associated with id
+     * @param  int $id 
+     * @return Response     
+     */
+    public function published($id)
+    {
+
+        $article = Article::findOrFail($id);
+
+        $article->published_at = Carbon::now();
+
+        $article->save();
+
+        Session::flash('successMessage', 'Artikel berhasil diterbitkan.');  
+
+        return Redirect::route('admin.article.index');
+
+    }
+
+    /**
+     * create publish button
+     * @param  int $id 
+     * @return html     html button
+     */
+    public function publishButton($id)
+    {
+        $html = FormFacade::open(array('url' => 'admin/article/published/' . $id, 'method' => 'PUT', 'class' => 'uk-display-inline uk-margin-left'));
+        $html .= FormFacade::hidden('id', $id);
+        $html .= FormFacade::submit('Publish', array('class' => 'uk-button uk-button-small uk-border-rounded uk-button-success'));
+        $html .= FormFacade::close();
+
+        return $html;
     }
 }

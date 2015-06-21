@@ -37,6 +37,12 @@
         <i class="uk-icon-plus"></i>
          Tambah
     </a>
+    @if(Auth::user()->level == 'author')
+        <hr>
+        <p>Keterangan:</p>
+        <i class="uk-icon uk-text-danger uk-icon-calendar-o"></i> 
+        Artikel belum diterbitkan / disetujui oleh administrator.
+    @endif
 @stop
 
 @section('script')

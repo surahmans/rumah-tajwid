@@ -56,4 +56,13 @@ class Article extends Model {
     {
         return $this->tags->lists('id');
     }
+
+    /**
+     * get published articles
+     * 
+     */
+    public function scopePublished($query)
+    {
+        $query->where('published_at', '!=', '0000-00-00 00:00:00');
+    }
 }
