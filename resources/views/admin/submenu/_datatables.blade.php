@@ -7,8 +7,8 @@
              "ajax": "{!! URL::route('admin.submenu.data') !!}",
              "columns": [
                  {data: 'name', name: 'name', title: 'Name'},
-                 {data: 'page', name: 'page', title: 'Link'},
-                 {data: 'parent_menu.name', name: 'parent', title: 'Parent'},
+                 {data: 'page', name: 'page', title: 'Link', orderable: false},
+                 {data: 'parent_menu.name', name: 'parent', title: 'Parent', searchable: false, orderable: false},
                  {data: 'actions', name: 'actions', title: 'Actions', searchable: false, orderable: false, className: "uk-text-center"},
              ]
          });
