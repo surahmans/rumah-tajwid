@@ -2,7 +2,7 @@
     $(document).ready(function() {
          oTable = $('#submenu').DataTable({
              "processing": true,
-             "serverSide": false,
+             "serverSide": true,
              "order": [0, 'asc'],
              "ajax": "{!! URL::route('admin.submenu.data') !!}",
              "columns": [
