@@ -150,6 +150,7 @@ return [
         'yajra\Datatables\DatatablesServiceProvider',
         'Pqb\FilemanagerLaravel\FilemanagerLaravelServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'ChrisKonnertz\OpenGraph\OpenGraphServiceProvider',
 
 	],
 
@@ -204,7 +205,7 @@ return [
         'Datatables'      => 'yajra\Datatables\Datatables',
         'FilemanagerLaravel'=> 'Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel',
         'Image' => 'Intervention\Image\Facades\Image',
-
+        'OpenGraph' => 'ChrisKonnertz\OpenGraph\OpenGraphFacade',
 	],
 
 ];

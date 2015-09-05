@@ -12,7 +12,8 @@
         "yajra/laravel-datatables-oracle": "~4.0",
 		"pqb/filemanager-laravel": "~2.0",
         "caouecs/laravel4-lang": "~2.0",
-		"intervention/imagecache": "~2.1"
+		"intervention/imagecache": "~2.1",
+		"chriskonnertz/open-graph": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

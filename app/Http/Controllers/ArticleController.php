@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use yajra\Datatables\Datatables;
+use ChrisKonnertz\OpenGraph\OpenGraph;
 
 class ArticleController extends Controller {
 
@@ -83,11 +84,14 @@ class ArticleController extends Controller {
             abort(404);
         }
 
+        //add openGraph
+        $og = $this->openGraph($article);
+
         $article->increment('views');
 
         $related = $this->getRelatedArticles($article);
 
-        return view('front.article', compact('article', 'related'));
+        return view('front.article', compact('article', 'related', 'og'));
 	}
 
 	/**
@@ -380,5 +384,23 @@ class ArticleController extends Controller {
         $html .= FormFacade::close();
 
         return $html;
+    }
+
+    /**
+     * create open graph tags 
+     * @param  $article 
+     * @return string          Open Graph Tags
+     */
+    public function openGraph($article)
+    {
+        $og = new OpenGraph();
+
+        $og->title($article->title)
+            ->type('article')
+            ->image('images/article/' . $article->cover)
+            ->description(substr($article->body, 0, 250))
+            ->url();
+
+        return $og;
     }
 }

@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+        {!! $og !!}
 		<!-- Bootstrap and Custom CSS -->
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen">
 		<script src="{{ asset('js/modernizr.js') }}"></script>
