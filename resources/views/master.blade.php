@@ -3,9 +3,17 @@
 	<head>
 		<title>@yield('title')</title>
 		<meta charset="UTF-8">
-		<meta name="description" content="">
+        @if (isset($article))
+            <meta name="description" content="{{ substr(strip_tags($article->body), 0, 250) }}">
+        @else
+            <meta name="description" content="Yayasan Rumah Tajwid Indonesia, pusat pendidikan Al-Quran semua usia dan semua level." />
+            <meta name="keywords" content="belajar tajwid, baca quran, rumah tajwid, yayasan tajwid, pendidikan al-quran" />
+        @endif
+        
+        @if (isset($og))
+            {!! $og !!}
+        @endif
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        {!! $og !!}
 		<!-- Bootstrap and Custom CSS -->
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen">
 		<script src="{{ asset('js/modernizr.js') }}"></script>

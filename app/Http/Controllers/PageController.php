@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use yajra\Datatables\Datatables;
+use ChrisKonnertz\OpenGraph\OpenGraph;
 
 class PageController extends Controller {
 
@@ -70,7 +71,9 @@ class PageController extends Controller {
             abort(404);
         }
 
-        return view('admin.page.show', compact('page'));
+        $og = $this->openGraph($page);
+
+        return view('admin.page.show', compact('page', 'og'));
 	}
 
 	/**
@@ -181,6 +184,23 @@ class PageController extends Controller {
         } else {
             return $slug;
         }
+    }
+
+    /**
+     * create open graph tags 
+     * @param  $article 
+     * @return string          Open Graph Tags
+     */
+    public function openGraph($page)
+    {
+        $og = new OpenGraph();
+
+        $og->title($page->title)
+            ->type('article')
+            ->description(substr($page->body, 0, 250))
+            ->url();
+
+        return $og;
     }
 
 }

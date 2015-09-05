@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\DB;
+use ChrisKonnertz\OpenGraph\OpenGraph;
 
 class WelcomeController extends Controller {
 
@@ -23,7 +24,9 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('front.main');
+		$og = $this->openGraph();
+
+		return view('front.main', compact('og'));
 	}
 
     public function article()
@@ -36,6 +39,24 @@ class WelcomeController extends Controller {
         $art = DB::query('select * from articles');
 
         return $art;
+    }
+
+    /**
+     * create open graph tags 
+     * 
+     * @return string          Open Graph Tags
+     */
+    public function openGraph()
+    {
+        $og = new OpenGraph();
+
+        $og->title('Rumah Tajwid Indonesia')
+        ->type('website')
+        ->description('Hidup mulia dengan Al-Qur\'an.')
+        ->url()
+        ->siteName('Rumah Tajwid Indonesia');
+
+        return $og;
     }
 
 }
