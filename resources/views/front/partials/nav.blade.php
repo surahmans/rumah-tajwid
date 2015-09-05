@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">{{ Date::now()->format('l, d F Y') }}</a>
+            <a href="/" class="navbar-brand">{{ Date::now()->format('l, d F Y') }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
